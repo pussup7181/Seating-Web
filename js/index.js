@@ -29,14 +29,18 @@ const firebaseConfig = {
   var add = document.getElementById("add");
   var email = document.getElementById("signup-email");
   var password = document.getElementById("signup-password");
-  var signUpButton = document.getElementById("signup-button").addEventListener('click',(e)=>{
+  
+
+
+
+function employeeSignUp(){
     e.preventDefault();
     createUserWithEmailAndPassword(auth,email.value,password.value)
       .then((cred)=>{
         console.log(cred);
         window.location.href = "/index.html";
       });
-  });
+  }
 
 
 
