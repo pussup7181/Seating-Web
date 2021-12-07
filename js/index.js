@@ -31,17 +31,15 @@ const firebaseConfig = {
   var password = document.getElementById("signup-password");
   var button = document.getElementById("signup-button");
 
-	button.addEventListener('click',employeeSignUp());
 
-function employeeSignUp(){
-	console.log("Called");
+  button.addEventListener('click',(e)=>{
     e.preventDefault();
     createUserWithEmailAndPassword(auth,email.value,password.value)
       .then((cred)=>{
         console.log(cred);
-        window.location.href = "https://www.google.com";
+        window.location.href = "/index.html";
       });
-  }
+  });
 
 
 
@@ -95,7 +93,7 @@ function employeeSignUp(){
       console.log(error);
     });
   }
-  //button.addEventListener('click',CheckData);
+ // button.addEventListener('click',CheckData);
 
 
   function SaveData(){
