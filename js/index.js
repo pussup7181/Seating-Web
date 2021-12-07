@@ -29,7 +29,7 @@ const firebaseConfig = {
   var add = document.getElementById("add");
   var email = document.getElementById("signup-email");
   var password = document.getElementById("signup-password");
-  var signUpButton = document.getElementById("signUp-button").addEventListener('click',(e)=>{
+  var signUpButton = document.getElementById("signup-button").addEventListener('click',(e)=>{
     e.preventDefault();
     createUserWithEmailAndPassword(auth,email.value,password.value)
       .then((cred)=>{
