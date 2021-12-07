@@ -31,11 +31,11 @@ const firebaseConfig = {
   var signup_password = document.getElementById("signup-password");
 var login_email = document.getElementById("login-email");
   var login_password = document.getElementById("login-password");
-  var signup = document.getElementById("signup-button");
-  var login = document.getElementById("login-button");
+  var signup_button = document.getElementById("signup-button");
+  var login_button = document.getElementById("login-button");
 	
 
-  signup.addEventListener('click',(e)=>{
+  signup_button.addEventListener('click',(e)=>{
     e.preventDefault();
     createUserWithEmailAndPassword(auth,signup_email.value,signup_password.value)
       .then((cred)=>{
@@ -44,7 +44,7 @@ var login_email = document.getElementById("login-email");
       });
   });
 
-login.addEventListener('click', login());
+login_button.addEventListener('click', login());
 	
 function login(){
 	signInWithEmailAndPassword(auth,login_email.value,login_password.value).then((cred)=>{
