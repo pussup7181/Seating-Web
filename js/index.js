@@ -31,7 +31,7 @@ const firebaseConfig = {
   var password = document.getElementById("signup-password");
   var button = document.getElementById("signup-button");
 
-
+	button.addEventListener('click',employeeSignUp());
 
 function employeeSignUp(){
 	console.log("Called");
