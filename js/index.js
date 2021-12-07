@@ -29,11 +29,12 @@ const firebaseConfig = {
   var add = document.getElementById("add");
   var email = document.getElementById("signup-email");
   var password = document.getElementById("signup-password");
-  
+  var button = document.getElementById("signup-button");
 
 
 
 function employeeSignUp(){
+	console.log("Called");
     e.preventDefault();
     createUserWithEmailAndPassword(auth,email.value,password.value)
       .then((cred)=>{
