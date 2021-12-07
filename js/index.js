@@ -40,17 +40,17 @@ var login_email = document.getElementById("login-email");
     createUserWithEmailAndPassword(auth,signup_email.value,signup_password.value)
       .then((cred)=>{
         console.log(cred);
-        window.location.href = "/Seating-Web";
+        //window.location.href = "/Seating-Web";
       });
   });
 
-login_button.addEventListener('click', login());
-	
-function login(){
+login_button.addEventListener('click', (e)=>{
+	e.preventDefault();
 	signInWithEmailAndPassword(auth,login_email.value,login_password.value).then((cred)=>{
 		console.log(cred);
 	});
-}
+});	
+
   function GetSeat(f,t,n){
     var seat = null;
 
