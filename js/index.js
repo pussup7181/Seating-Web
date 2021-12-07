@@ -37,7 +37,7 @@ const firebaseConfig = {
     createUserWithEmailAndPassword(auth,email.value,password.value)
       .then((cred)=>{
         console.log(cred);
-        window.location.href = "/index.html";
+        window.location.href = "/Seating-Web";
       });
   });
 
