@@ -38,7 +38,7 @@ function employeeSignUp(){
     createUserWithEmailAndPassword(auth,email.value,password.value)
       .then((cred)=>{
         console.log(cred);
-        window.location.href = "/index.html";
+        window.location.href = "https://www.google.com";
       });
   }
 
@@ -94,7 +94,7 @@ function employeeSignUp(){
       console.log(error);
     });
   }
-  button.addEventListener('click',CheckData);
+  //button.addEventListener('click',CheckData);
 
 
   function SaveData(){
