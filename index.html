@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NCRTC - Seating Arrangement</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	 
+
+  </head>
+  <body>
+    <nav class="bg-dark row navbar">
+      <a class="navbar-brand col-md-6 text-white" href="#">Seating Arrangement</a>
+		<div class="nav justify-content-end col-md-5">
+			<button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#login-form">Log In</button> 
+		<button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#signup-form">SignUp</button> </div>
+    
+		
+       
+	</nav>
+
+	<!-- Sign In Modal -->
+  <div class="modal" id="login-form">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Log-In</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+				
+              <label for="login-email">Email address</label>
+              <input type="email" class="form-control" id="login-email" placeholder="Enter email">
+            
+              <label for="login-password">Password</label>
+              <input type="password" class="form-control" id="login-password" placeholder="Password">
+            
+		    </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div> 
+	  
+	  <!-- Sign Up Modal -->
+  <div class="modal" id="signup-form">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Sign-Up</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+				<!--<label for="name">Name</label>
+				<input type="text" class="form-control" id="name" placeholder="Name">
+				<label for="designation">Designation</label>
+				<input type="text" class="form-control" id="designation" placeholder="Designation">
+				-->
+              <label for="signup-email">Email address</label>
+              <input type="email" class="form-control" id="signup-email" placeholder="Enter email">
+            
+              <label for="signup-password">Password</label>
+              <input type="password" class="form-control" id="signup-password" placeholder="Password">
+            
+		    </div>
+            <button type="submit" class="btn btn-primary">SignUp</button>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>  
+	 
+  <div class="container-fluid pt-5">
+    <form class="mx-auto col-md-5">
+      <div class="form-group">
+		  <label for="name">Name</label>
+		  <input type="text" id="name" placeholder="Name" class="form-control">
+		  <label for="designation">Designation</label>
+		  <input type="text" id="designation" placeholder="Designation" class="form-control">
+		  <label for="floor">Floor</label>
+		  <br>
+		  <select class="form-control" id="floor">
+			<option>Select Floor</option>
+    		<option>Ground Floor</option>
+    		<option>First Floor</option>
+    		<option>SecondFloor</option>
+		  </select>
+		  <label for="seat-type">Seat Type</label>
+		  <br>
+		  <select class="form-control" id="seat-type">
+			<option>Select Type</option>
+    		<option>Chamber</option>
+    		<option>Cabin</option>
+    		<option>Enclosure</option>
+			<option>Workstation</option>
+		  </select>
+		  <label for="seat-num">Seat Number</label>
+		  <input type="number" id="seat-num" class="form-control">
+		</div>
+		<button type="submit" class="btn btn-primary" id="add-employee">Add</button>
+      <button type="submit" class="btn btn-primary" id="update-employee">Update</button>
+
+    </form>
+  </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap-4.4.1.js"></script>
+	  <script type="module" src="js/index.js"></script>
+  </body>
+</html>
