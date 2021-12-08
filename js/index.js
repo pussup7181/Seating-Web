@@ -18,21 +18,7 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const db = getDatabase();
   const auth = getAuth();
-
-
-const user = auth.currentUser;
-
-if (user) {
-  // User is signed in, see docs for a list of available properties
-  // https://firebase.google.com/docs/reference/js/firebase.User
-  // ...
-	console.log("signed IN");
-} else {
-  // No user is signed in.
-	console.log("no-User");
-}
-
-
+  
   var nam = document.getElementById("name");
   var designation = document.getElementById("designation");
   var floor = document.getElementById("floor");
@@ -40,7 +26,10 @@ if (user) {
   var number = document.getElementById("seat-num");
   
   var seatNumber;
-  var add = document.getElementById("add");
+  var add = document.getElementById("add-employee");
+  add.addEventListener('click',CheckData);
+  var update_button = document.getElementById("update-employee");
+	update_button.addEventListener('click', UpdateSeat);
   var signup_email = document.getElementById("signup-email");
   var signup_password = document.getElementById("signup-password");
 const login_email = document.getElementById("login-email");
@@ -50,6 +39,7 @@ const login_email = document.getElementById("login-email");
   var logout_button = document.getElementById("logout-button");
 var keep_in = document.getElementById("keep_in");
 var cred_area = document.getElementById("cred_area");
+var seat_data = document.getElementById("seat_data");
 
   signup_button.addEventListener('click',(e)=>{
     e.preventDefault();
@@ -91,6 +81,7 @@ login_button.addEventListener('click', (e)=>{
 logout_button.addEventListener('click', (e)=>{
 	e.preventDefault();
 	signOut(auth).then(() => {
+		console.log("signOut");
   // Sign-out successful.
 }).catch((error) => {
   // An error happened.
@@ -102,15 +93,16 @@ onAuthStateChanged(auth, (cred) => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = cred.uid;
-	  console.log(cred);
 	  cred_area.style.display = "none";
 	  logout_button.style.display = "block";
+	  seat_data.style.display = "block";
     // ...
   } else {
     // User is signed out
     // ...
 	  cred_area.style.display = "block";
 	  logout_button.style.display = "none";
+	  seat_data.style.display = "none";
   }
 });
 
@@ -151,7 +143,14 @@ onAuthStateChanged(auth, (cred) => {
   return seat + n;
   }
 
-  function CheckData(){
+	function UpdateSeat(){
+		    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
+
+	}
+
+
+  function CheckData(event){
+	event.preventDefault();
     seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
     const dbref = ref(db);
     get(child(dbref, "SeatNumber/"+seatNumber)).then((snapshot)=>{
@@ -166,7 +165,6 @@ onAuthStateChanged(auth, (cred) => {
       console.log(error);
     });
   }
- // button.addEventListener('click',CheckData);
 
 
   function SaveData(){

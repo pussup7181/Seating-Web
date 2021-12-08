@@ -14,11 +14,12 @@
   <body>
     <nav class="bg-dark row navbar">
       <a class="navbar-brand col-md-6 text-white" href="#">Seating Arrangement</a>
-		<button type="button" class="btn btn-primary m-1" id="logout-button" style="display: none">Log Out</button>
+	  <button type="button" class="btn btn-primary m-1" id="logout-button" style="display: none">Log Out</button>
 	</nav>
-
-    <div class="container-fluid pt-5" id="cred_area"><div class="mx-auto col-md-5" >
-			<div class="d-flex justify-content-center"><button type="button" class="btn btn-primary m-1"  data-toggle="modal" data-target="#login-form">Log In</button></div>
+	
+  <div class="container-fluid pt-5" id="cred_area">
+      <div class="mx-auto col-md-5" >
+		<div class="d-flex justify-content-center"><button type="button" class="btn btn-primary m-1"  data-toggle="modal" data-target="#login-form">Log In</button></div>
 		<div class="d-flex justify-content-center"><button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#signup-form">SignUp</button> </div></div></div>
   <!-- Sign In Modal -->
   <div class="modal" id="login-form">
@@ -43,14 +44,14 @@
               <input type="password" class="form-control" id="login-password" placeholder="Password">
             
 		    </div>
-			  <input type="checkbox" class="m-1" id="keep_in">Keep Me Signed In<br>
-            <button type="submit" class="btn btn-primary" id="login-button">Login</button>
+		    <input type="checkbox" class="m-1" id="keep_in">Keep Me Signed In<br>
+            <button type="submit" class="btn btn-primary" id="login-button" data-dismiss="modal">Login</button>
           </form>
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
         </div>
         
       </div>
@@ -84,7 +85,7 @@
               <input type="password" class="form-control" id="signup-password" placeholder="Password">
             
 		    </div>
-            <button type="submit" class="btn btn-primary" id="signup-button">SignUp</button>
+            <button type="submit" class="btn btn-primary" id="signup-button" data-dismiss="modal">SignUp</button>
           </form>
         </div>
         
@@ -97,9 +98,13 @@
     </div>
   </div>  
 
-	  
-	  
-  <div class="container-fluid pt-5" style="display: none">
+	 <div class="container-fluid pt-5" style="display: none" id="seat_data"> 
+	<div><img src="images/0001.jpg" alt="" width="508" height="503" usemap="#FE3" id="first_map"/>
+      <map name="FE3">
+        <area shape="rect" coords="6,142,47,170" id="FE3" target="FE3" alt="First Floor Enclosure 3" style="cursor: pointer">
+      </map>
+	</div>  
+  <div >
     <form class="mx-auto col-md-5">
       <div class="form-group">
 		  <label for="name">Name</label>
@@ -110,9 +115,9 @@
 		  <br>
 		  <select class="form-control" id="floor">
 			<option>Select Floor</option>
-    		<option>Ground Floor</option>
-    		<option>First Floor</option>
-    		<option>SecondFloor</option>
+    		<option>GROUND FLOOR</option>
+    		<option>FIRST FLOOR</option>
+    		<option>SECOND FLOOR</option>
 		  </select>
 		  <label for="seat-type">Seat Type</label>
 		  <br>
@@ -130,7 +135,7 @@
       <button type="submit" class="btn btn-primary" id="update-employee">Update</button>
 
     </form>
-  </div>
+  </div></div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
     <script src="js/jquery-3.4.1.min.js"></script>
 
