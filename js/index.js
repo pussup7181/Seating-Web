@@ -94,12 +94,15 @@ onAuthStateChanged(auth, (cred) => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = cred.uid;
+	  console.log(cred);
 	  cred_area.style.display = "none";
+	  logout_button.style.display = "block";
     // ...
   } else {
     // User is signed out
     // ...
-	  logout_button.style.display = "block";
+	  cred_area.style.display = "block";
+	  logout_button.style.display = "none";
   }
 });
 
