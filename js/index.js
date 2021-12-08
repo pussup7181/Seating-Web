@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";// TODO: Add SDKs for Firebase products that you want to use
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, setPersistence, signInWithEmailAndPassword, browserSessionPersistence} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";// TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -19,6 +19,20 @@ const firebaseConfig = {
   const db = getDatabase();
   const auth = getAuth();
 
+
+const user = auth.currentUser;
+
+if (user) {
+  // User is signed in, see docs for a list of available properties
+  // https://firebase.google.com/docs/reference/js/firebase.User
+  // ...
+	console.log("signed IN");
+} else {
+  // No user is signed in.
+	console.log("no-User");
+}
+
+
   var nam = document.getElementById("name");
   var designation = document.getElementById("designation");
   var floor = document.getElementById("floor");
@@ -29,11 +43,13 @@ const firebaseConfig = {
   var add = document.getElementById("add");
   var signup_email = document.getElementById("signup-email");
   var signup_password = document.getElementById("signup-password");
-var login_email = document.getElementById("login-email");
-  var login_password = document.getElementById("login-password");
+const login_email = document.getElementById("login-email");
+  const login_password = document.getElementById("login-password");
   var signup_button = document.getElementById("signup-button");
   var login_button = document.getElementById("login-button");
-	
+  var logout_button = document.getElementById("logout-button");
+var keep_in = document.getElementById("keep_in");
+var cred_area = document.getElementById("cred_area");
 
   signup_button.addEventListener('click',(e)=>{
     e.preventDefault();
@@ -46,10 +62,49 @@ var login_email = document.getElementById("login-email");
 
 login_button.addEventListener('click', (e)=>{
 	e.preventDefault();
-	signInWithEmailAndPassword(auth,login_email.value,login_password.value).then((cred)=>{
+	if(keep_in.checked){
+		setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+			console.log("There");
+    return signInWithEmailAndPassword(auth, login_email.value, login_password.value);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+	}
+	else{
+		console.log("no-there");
+		signInWithEmailAndPassword(auth,login_email.value,login_password.value).then((cred)=>{
 		console.log(cred);
 	});
+	}
+	
 });	
+
+
+onAuthStateChanged(auth, (cred) => {
+  if (cred) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = cred.uid;
+	  cred_area.style.display = "none";
+    // ...
+  } else {
+    // User is signed out
+    // ...
+	  logout_button.style.display = "block";
+  }
+});
+
+
+
 
   function GetSeat(f,t,n){
     var seat = null;
