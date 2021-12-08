@@ -88,6 +88,14 @@ login_button.addEventListener('click', (e)=>{
 	
 });	
 
+logout_button.addEventListener('click', (e)=>{
+	e.preventDefault();
+	signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+});
 
 onAuthStateChanged(auth, (cred) => {
   if (cred) {
