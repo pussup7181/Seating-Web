@@ -8,7 +8,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-	 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
   </head>
   <body>
@@ -113,53 +114,175 @@
 	  <div class="row">
 		<div class="col-lg-6" id="ground_floor">
 			<img src="images/0001.jpg" alt="" width="500" usemap="#ground_map" id="ground_map"/>
- 		  <map name="ground_map">
-				  <area shape="rect" coords="178,54,214,79" href="#" target="GE1" id="GE1">
-		 		  <area shape="rect" coords="179,22,215,46" href="#" target="GE2" alt="">
-		 		  <area shape="rect" coords="225,21,239,37" href="#" target="GW7">
-		 		  <area shape="rect" coords="225,37,238,48" href="#" target="GW6">
-		 		  <area shape="rect" coords="224,50,238,62" href="#" target="GW5" alt="">
-		 		  <area shape="rect" coords="222,63,236,77" href="#" target="GW4">
-                  <area shape="rect" coords="242,22,254,34" href="#" target="GW8">
-                  <area shape="rect" coords="241,36,254,51" href="#" target="GW9">
-                  <area shape="rect" coords="241,52,255,63" href="#" target="GW10">
-                  <area shape="rect" coords="241,63,254,76" href="#" target="GW11">
-                  <area shape="rect" coords="257,21,274,33" href="#" target="GW15">
-                  <area shape="rect" coords="256,35,272,47" href="#" target="GW14">
-                  <area shape="rect" coords="258,50,271,61" href="#" target="GW13">
-                  <area shape="rect" coords="256,64,272,77" href="#" target="GW12">
-                  <area shape="rect" coords="291,20,338,79" href="#" target="GC1">
-                  <area shape="rect" coords="365,107,390,145" href="#" target="GE6">
-                  <area shape="rect" coords="365,143,390,179" href="#" target="GE5">
-                  <area shape="rect" coords="231,143,264,179" href="#" target="GE4">
-                  <area shape="rect" coords="232,106,263,144" href="#" target="GE3">
-                  <area shape="rect" coords="267,107,282,123" href="#" target="GW17">
-            <area shape="rect" coords="265,124,282,137" href="#" target="GW18">
-            <area shape="rect" coords="265,138,283,151" href="#" target="GW19">
-            <area shape="rect" coords="266,151,282,164" href="#" target="GW20">
-            <area shape="rect" coords="266,165,284,179" href="#" target="GW21">
-            <area shape="rect" coords="285,164,300,180" href="#" target="GW22">
-            <area shape="rect" coords="286,150,301,163" href="#" target="GW23">
-            <area shape="rect" coords="286,137,300,150" href="#" target="GW24">
-            <area shape="rect" coords="286,125,299,139" href="#" target="GW25">
-            <area shape="rect" coords="287,108,299,124" href="#" target="GW26">
-            <area shape="rect" coords="320,110,336,125" href="#" target="GW27">
-            <area shape="rect" coords="319,127,334,137" href="#" target="GW28">
-            <area shape="rect" coords="318,139,333,151" href="#" target="GW29">
-            <area shape="rect" coords="319,151,332,165" href="#" target="GW30">
-            <area shape="rect" coords="318,164,334,177" href="#" target="GW31">
-            <area shape="rect" coords="338,164,352,177" href="#" target="GW32">
-            <area shape="rect" coords="337,151,353,161" href="#" target="GW33">
-            <area shape="rect" coords="339,139,353,149" href="#" target="GW34">
-            <area shape="rect" coords="338,125,352,136" href="#" target="GW35">
-            <area shape="rect" coords="340,111,351,125" href="#" target="GW36">
-          </map>
+  		  <map name="ground_map">
+		 	<area shape="rect" coords="178,54,214,79" href="#" target="GE1" id="GE1" style="cursor: pointer">
+		 	<area shape="rect" coords="179,22,215,46" href="#" target="GE2" id="GE2" style="cursor: pointer">
+		 	<area shape="rect" coords="225,21,239,37" href="#" target="GW7" id="GW7" style="cursor: pointer">
+		 	<area shape="rect" coords="225,37,238,48" href="#" target="GW6" id="GW6" style="cursor: pointer">
+		 	<area shape="rect" coords="224,50,238,62" href="#" target="GW5" id="GW5" style="cursor: pointer">
+		 	<area shape="rect" coords="222,63,236,77" href="#" target="GW4" id="GW4" style="cursor: pointer">
+            <area shape="rect" coords="242,22,254,34" href="#" target="GW8" id="GW8" style="cursor: pointer">
+            <area shape="rect" coords="241,36,254,51" href="#" target="GW9" id="GW9" style="cursor: pointer">
+            <area shape="rect" coords="241,52,255,63" href="#" target="GW10" id="GW10" style="cursor: pointer">
+            <area shape="rect" coords="241,63,254,76" href="#" target="GW11" id="GW11" style="cursor: pointer">
+            <area shape="rect" coords="257,21,274,33" href="#" target="GW15" id="GW15" style="cursor: pointer">
+            <area shape="rect" coords="256,35,272,47" href="#" target="GW14" id="GW14" style="cursor: pointer">
+            <area shape="rect" coords="258,50,271,61" href="#" target="GW13" id="GW13" style="cursor: pointer">
+            <area shape="rect" coords="256,64,272,77" href="#" target="GW12" id="GW12" style="cursor: pointer">
+            <area shape="rect" coords="291,20,338,79" href="#" target="GC1" id="GC1" style="cursor: pointer">
+            <area shape="rect" coords="365,107,390,145" href="#" target="GE6" id="GE6" style="cursor: pointer">
+            <area shape="rect" coords="365,143,390,179" href="#" target="GE5" id="GE5" style="cursor: pointer">
+            <area shape="rect" coords="231,143,264,179" href="#" target="GE4" id="GE4" style="cursor: pointer">
+            <area shape="rect" coords="232,106,263,144" href="#" target="GE3" id="GE3" style="cursor: pointer">
+            <area shape="rect" coords="267,107,282,123" href="#" target="GW17" id="GW17" style="cursor: pointer">
+			<area shape="rect" coords="265,124,282,137" href="#" target="GW18" id="GW18" style="cursor: pointer">
+			<area shape="rect" coords="265,138,283,151" href="#" target="GW19" id="GW19" style="cursor: pointer">
+			<area shape="rect" coords="266,151,282,164" href="#" target="GW20" id="GW20" style="cursor: pointer">
+			<area shape="rect" coords="266,165,284,179" href="#" target="GW21" id="GW21" style="cursor: pointer">
+			<area shape="rect" coords="285,164,300,180" href="#" target="GW22" id="GW22" style="cursor: pointer">
+			<area shape="rect" coords="286,150,301,163" href="#" target="GW23" id="GW23" style="cursor: pointer">
+			<area shape="rect" coords="286,137,300,150" href="#" target="GW24" id="GW24" style="cursor: pointer">
+			<area shape="rect" coords="286,125,299,139" href="#" target="GW25" id="GW25" style="cursor: pointer">
+			<area shape="rect" coords="287,108,299,124" href="#" target="GW26" id="GW26" style="cursor: pointer">
+			<area shape="rect" coords="320,110,336,125" href="#" target="GW27" id="GW27" style="cursor: pointer">
+			<area shape="rect" coords="319,127,334,137" href="#" target="GW28" id="GW28" style="cursor: pointer">
+			<area shape="rect" coords="318,139,333,151" href="#" target="GW29" id="GW29" style="cursor: pointer">
+			<area shape="rect" coords="319,151,332,165" href="#" target="GW30" id="GW30" style="cursor: pointer">
+			<area shape="rect" coords="318,164,334,177" href="#" target="GW31" id="GW31" style="cursor: pointer">
+			<area shape="rect" coords="338,164,352,177" href="#" target="GW32" id="GW32" style="cursor: pointer">
+			<area shape="rect" coords="337,151,353,161" href="#" target="GW33" id="GW33" style="cursor: pointer">
+			<area shape="rect" coords="339,139,353,149" href="#" target="GW34" id="GW34" style="cursor: pointer">
+			<area shape="rect" coords="338,125,352,136" href="#" target="GW35" id="GW35" style="cursor: pointer">
+			<area shape="rect" coords="340,111,351,125" href="#" target="GW36" id="GW36" style="cursor: pointer">
+   		  </map>
 		</div>
 		  <div class="col-lg-6" id="first_floor">
 			<img src="images/0002.jpg" alt="" width="500" usemap="#first_map" id="first_map"/>
 		 		<map name="first_map">
-					<area shape="rect" coords="8,123,49,149" href="#" id="FE4" alt="First Floor Enclosure 4"  style="cursor: pointer">
-				</map>
+					<area shape="rect" coords="8,123,49,149" href="#" target="FE4" id="FE4" style="cursor: pointer">
+					<area shape="rect" coords="9,147,50,172" href="#" target="FE3" id="FE3" style="cursor: pointer">
+					<area shape="rect" coords="12,180,45,204" href="#" target="FE2" id="FE2" style="cursor: pointer">
+					<area shape="rect" coords="12,203,47,227" href="#" target="FE1" id="FE1" style="cursor: pointer">
+					<area shape="rect" coords="11,235,46,260" href="#" target="FE41" id="FE41" style="cursor: pointer">
+					<area shape="rect" coords="10,259,49,281" href="#" target="FE40" id="FE40" style="cursor: pointer">
+					<area shape="rect" coords="11,288,47,312" href="#" target="FE39" id="FE39" style="cursor: pointer">
+					<area shape="rect" coords="7,313,73,356" href="#" target="FC11" id="FC11" style="cursor: pointer">
+					<area shape="rect" coords="7,391,71,430" href="#" target="FC10" id="FC10" style="cursor: pointer">
+					<area shape="rect" coords="181,427,217,476" href="#" target="FC8" id="FC8" style="cursor: pointer">
+					<area shape="rect" coords="223,427,261,476" href="#" target="FC7" id="FC7" style="cursor: pointer">
+					<area shape="rect" coords="309,426,346,476" href="#" target="FC6" id="FC6" style="cursor: pointer">
+					<area shape="rect" coords="426,397,485,443" href="#" target="FC5" id="FC5" style="cursor: pointer">
+					<area shape="rect" coords="428,318,485,359" href="#" target="FC4" id="FC4" style="cursor: pointer">
+					<area shape="rect" coords="458,278,486,319" href="#" target="FE23" id="FE23" style="cursor: pointer">
+					<area shape="rect" coords="426,278,452,319" href="#" target="FE24" id="FE24" style="cursor: pointer">
+					<area shape="rect" coords="448,248,487,272" href="#" target="FE22" id="FE22" style="cursor: pointer">
+					<area shape="rect" coords="448,224,488,249" href="#" target="FE21" id="FE21" style="cursor: pointer">
+					<area shape="rect" coords="459,186,485,215" href="#" target="FE20" id="FE20" style="cursor: pointer">
+					<area shape="rect" coords="429,186,450,217" href="#" target="FE19" id="FE19" style="cursor: pointer">
+					<area shape="rect" coords="427,140,488,184" href="#" target="FC3" id="FC3" style="cursor: pointer">
+					<area shape="rect" coords="295,22,337,78" href="#" target="FC2" id="FC2" style="cursor: pointer">
+					<area shape="rect" coords="148,20,194,77" href="#" target="FC1" id="FC1" style="cursor: pointer">
+					<area shape="rect" coords="100,102,126,143" href="#" target="FE7" id="FE7" style="cursor: pointer">
+					<area shape="rect" coords="100,142,125,178" href="#" target="FE6" id="FE6" style="cursor: pointer">
+					<area shape="rect" coords="134,106,159,144" href="#" target="FE8" id="FE8" style="cursor: pointer">
+					<area shape="rect" coords="136,141,158,177" href="#" target="FE10" id="FE10" style="cursor: pointer">
+					<area shape="rect" coords="159,108,180,143" href="#" target="FE9" id="FE9" style="cursor: pointer">
+					<area shape="rect" coords="157,145,182,177" href="#" target="FE11" id="FE11" style="cursor: pointer">
+					<area shape="rect" coords="137,187,175,212" href="#" target="FE5" id="FE5" style="cursor: pointer">
+					<area shape="rect" coords="290,107,319,144" href="#" target="FE12" id="FE12" style="cursor: pointer">
+					<area shape="rect" coords="294,143,320,178" href="#" target="FE15" id="FE15" style="cursor: pointer">
+					<area shape="rect" coords="318,106,342,143" href="#" target="FE13" id="FE13" style="cursor: pointer">
+					<area shape="rect" coords="319,141,340,178" href="#" target="FE16" id="FE16" style="cursor: pointer">
+					<area shape="rect" coords="353,111,374,140" href="#" target="FE14" id="FE14" style="cursor: pointer">
+					<area shape="rect" coords="352,147,372,177" href="#" target="FE17" id="FE17" style="cursor: pointer">
+					<area shape="rect" coords="322,189,356,213" href="#" target="FE18" id="FE18" style="cursor: pointer">
+					<area shape="rect" coords="319,283,348,309" href="#" target="FE25" id="FE25" style="cursor: pointer">
+					<area shape="rect" coords="371,320,394,350" href="#" target="FE28" id="FE28" style="cursor: pointer">
+					<area shape="rect" coords="373,355,395,389" href="#" target="FE29" id="FE29" style="cursor: pointer">
+					<area shape="rect" coords="339,318,363,353" href="#" target="FE27" id="FE27" style="cursor: pointer">
+					<area shape="rect" coords="315,318,338,353" href="#" target="FE26" id="FE26" style="cursor: pointer">
+					<area shape="rect" coords="315,355,335,386" href="#" target="FE31" id="FE31" style="cursor: pointer">
+					<area shape="rect" coords="339,356,360,385" href="#" target="FE30" id="FE30" style="cursor: pointer">
+					<area shape="rect" coords="177,316,202,352" href="#" target="FE37" id="FE37" style="cursor: pointer">
+					<area shape="rect" coords="154,314,177,351" href="#" target="FE36" id="FE36" style="cursor: pointer">
+					<area shape="rect" coords="125,321,145,345" href="#" target="FE35" id="FE35" style="cursor: pointer">
+					<area shape="rect" coords="125,353,145,388" href="#" target="FE34" id="FE34" style="cursor: pointer">
+					<area shape="rect" coords="153,349,175,385" href="#" target="FE33" id="FE33" style="cursor: pointer">
+					<area shape="rect" coords="180,352,201,386" href="#" target="FE32" id="FE32" style="cursor: pointer">
+					<area shape="rect" coords="146,284,174,307" href="#" target="FE38" id="FE38" style="cursor: pointer">
+					<area shape="rect" coords="52,127,65,140" href="#" target="FW6" id="FW6" style="cursor: pointer">
+					<area shape="rect" coords="53,141,65,155" href="#" target="FW5" id="FW5" style="cursor: pointer">
+					<area shape="rect" coords="53,157,64,171" href="#" target="FW4" id="FW4" style="cursor: pointer">
+					<area shape="rect" coords="52,183,65,193" href="#" target="FW3" id="FW3" style="cursor: pointer">
+					<area shape="rect" coords="53,197,64,208" href="#" target="FW2" id="FW2" style="cursor: pointer">
+					<area shape="rect" coords="54,211,65,225" href="#" target="FW1" id="FW1" style="cursor: pointer">
+					<area shape="rect" coords="207,108,220,120" href="#" target="FW9" id="FW9" style="cursor: pointer">
+					<area shape="rect" coords="207,122,219,133" href="#" target="FW10" id="FW10" style="cursor: pointer">
+					<area shape="rect" coords="207,134,218,147" href="#" target="FW11" id="FW11" style="cursor: pointer">
+					<area shape="rect" coords="205,149,221,161" href="#" target="FW12" id="FW12" style="cursor: pointer">
+					<area shape="rect" coords="206,163,219,176" href="#" target="FW13" id="FW13" style="cursor: pointer">
+					<area shape="rect" coords="225,164,235,176" href="#" target="FW14" id="FW14" style="cursor: pointer">
+					<area shape="rect" coords="224,149,236,161" href="#" target="FW15" id="FW15" style="cursor: pointer">
+					<area shape="rect" coords="223,136,238,148" href="#" target="FW16" id="FW16" style="cursor: pointer">
+					<area shape="rect" coords="224,123,236,135" href="#" target="FW17" id="FW17" style="cursor: pointer">
+					<area shape="rect" coords="226,107,236,121" href="#" target="FW18" id="FW18" style="cursor: pointer">
+					<area shape="rect" coords="241,108,252,121" href="#" target="FW19" id="FW19" style="cursor: pointer">
+					<area shape="rect" coords="239,121,253,134" href="#" target="FW20" id="FW20" style="cursor: pointer">
+					<area shape="rect" coords="239,136,252,147" href="#" target="FW21" id="FW21" style="cursor: pointer">
+					<area shape="rect" coords="239,150,254,161" href="#" target="FW22" id="FW22" style="cursor: pointer">
+					<area shape="rect" coords="239,163,253,176" href="#" target="FW23" id="FW23" style="cursor: pointer">
+					<area shape="rect" coords="255,164,272,176" href="#" target="FW24" id="FW24" style="cursor: pointer">
+					<area shape="rect" coords="257,148,269,160" href="#" target="FW25" id="FW25" style="cursor: pointer">
+					<area shape="rect" coords="258,136,271,149" href="#" target="FW26" id="FW26" style="cursor: pointer">
+					<area shape="rect" coords="257,121,271,135" href="#" target="FW27" id="FW27" style="cursor: pointer">
+					<area shape="rect" coords="259,109,270,121" href="#" target="FW28" id="FW28" style="cursor: pointer">
+                  <area shape="rect" coords="375,162,387,177" href="#" target="FW31" id="FW31" style="cursor: pointer">
+		 		  <area shape="rect" coords="389,163,398,176" href="#" target="FW32" id="FW32" style="cursor: pointer">
+		 		  <area shape="rect" coords="359,195,371,211" href="#" target="FW33" id="FW33" style="cursor: pointer">
+		 		  <area shape="rect" coords="379,194,390,213" href="#" target="FW34" id="FW34" style="cursor: pointer">
+		 		  <area shape="rect" coords="356,284,370,304" href="#" target="FW38" id="FW38" style="cursor: pointer">
+		 		  <area shape="rect" coords="381,285,392,305" href="#" target="FW37" id="FW37" style="cursor: pointer">
+                  <area shape="rect" coords="391,416,406,428" href="#" target="FW39" id="FW39" style="cursor: pointer">
+                  <area shape="rect" coords="391,431,407,445" href="#" target="FW40" id="FW40" style="cursor: pointer">
+                  <area shape="rect" coords="391,446,407,459" href="#" target="FW41" id="FW41" style="cursor: pointer">
+                  <area shape="rect" coords="393,460,407,476" href="#" target="FW42" id="FW42" style="cursor: pointer">
+                  <area shape="rect" coords="285,429,299,445" href="#" target="FW43" id="FW43" style="cursor: pointer">
+                  <area shape="rect" coords="285,446,299,459" href="#" target="FW44" id="FW44" style="cursor: pointer">
+                  <area shape="rect" coords="285,460,298,475" href="#" target="FW45" id="FW45" style="cursor: pointer">
+                  <area shape="rect" coords="267,462,279,477" href="#" target="FW46" id="FW46" style="cursor: pointer">
+                  <area shape="rect" coords="266,448,280,460" href="#" target="FW47" id="FW47" style="cursor: pointer">
+                  <area shape="rect" coords="267,432,278,445" href="#" target="FW48" id="FW48" style="cursor: pointer">
+                  <area shape="rect" coords="278,375,290,393" href="#" target="FW49" id="FW49" style="cursor: pointer">
+                  <area shape="rect" coords="277,361,292,373" href="#" target="FW50" id="FW50" style="cursor: pointer">
+                  <area shape="rect" coords="279,346,291,360" href="#" target="FW51" id="FW51" style="cursor: pointer">
+                  <area shape="rect" coords="277,333,289,346" href="#" target="FW52" id="FW52" style="cursor: pointer">
+                  <area shape="rect" coords="277,318,290,333" href="#" target="FW53" id="FW53" style="cursor: pointer">
+                  <area shape="rect" coords="260,319,272,333" href="#" target="FW54" id="FW54" style="cursor: pointer">
+                  <area shape="rect" coords="260,334,272,349" href="#" target="FW55" id="FW55" style="cursor: pointer">
+                  <area shape="rect" coords="258,349,273,361" href="#" target="FW56" id="FW56" style="cursor: pointer">
+                  <area shape="rect" coords="260,361,273,373" href="#" target="FW57" id="FW57" style="cursor: pointer">
+                  <area shape="rect" coords="260,375,274,389" href="#" target="FW58" id="FW58" style="cursor: pointer">
+                  <area shape="rect" coords="243,376,256,386" href="#" target="FW59" id="FW59" style="cursor: pointer">
+                  <area shape="rect" coords="243,361,255,372" href="#" target="FW60" id="FW60" style="cursor: pointer">
+                  <area shape="rect" coords="242,347,257,360" href="#" target="FW61" id="FW61" style="cursor: pointer">
+                  <area shape="rect" coords="242,334,259,347" href="#" target="FW62" id="FW62" style="cursor: pointer">
+                  <area shape="rect" coords="243,316,259,333" href="#" target="FW63" id="FW63" style="cursor: pointer">
+                  <area shape="rect" coords="226,318,242,334" href="#" target="FW64" id="FW64" style="cursor: pointer">
+                  <area shape="rect" coords="226,336,242,348" href="#" target="FW65" id="FW64" style="cursor: pointer">
+                  <area shape="rect" coords="228,349,242,359" href="#" target="FW66" id="FW66" style="cursor: pointer">
+                  <area shape="rect" coords="225,360,242,374" href="#" target="FW67" id="FW67" style="cursor: pointer">
+                  <area shape="rect" coords="225,374,241,385" href="#" target="FW68" id="FW68" style="cursor: pointer">
+                  <area shape="rect" coords="424,234,440,248" href="#" target="FW35" id="FW35" style="cursor: pointer">
+                  <area shape="rect" coords="426,249,444,267" href="#" target="FW36" id="FW36" style="cursor: pointer">
+                  <area shape="rect" coords="52,234,73,248" href="#" target="FW78" id="FW78" style="cursor: pointer">
+                  <area shape="rect" coords="51,250,69,263" href="#" target="FW77" id="FW77" style="cursor: pointer">
+                  <area shape="rect" coords="53,263,70,282" href="#" target="FW76" id="FW76" style="cursor: pointer">
+                  <area shape="rect" coords="54,295,74,311" href="#" target="FW75" id="FW75" style="cursor: pointer">
+                  <area shape="rect" coords="104,284,116,302" href="#" target="FW74" id="FW74" style="cursor: pointer">
+                  <area shape="rect" coords="127,285,140,303" href="#" target="FW73" id="FW73" style="cursor: pointer">
+                  <area shape="rect" coords="93,316,105,337" href="#" target="FW71" id="FW71" style="cursor: pointer">
+                  <area shape="rect" coords="108,317,122,335" href="#" target="FW72" id="FW72" style="cursor: pointer">
+                </map>
 		</div>
 		  <div class="col-lg-6" id="second_floor">
 			<img src="images/0003.jpg" alt="" width="500" usemap="#second_map" id="second_map"/>

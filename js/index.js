@@ -48,18 +48,6 @@ map_select.addEventListener("change",()=>{
 	console.log(map_select.selectedIndex);
 });
 
-//SEAT ID MAPPING
-
-var area = document.getElementsByTagName('area');
-
-for(int i=0;i<area.length;i++){
-	area[i].addEventListener('click',(e)=>{
-	e.preventDefault();
-	
-	fetch_seat(area[i].id);
-});}
-
-
 
 
 function fetch_seat(str){
@@ -78,7 +66,6 @@ function fetch_seat(str){
       console.log(error);
     });
 }
-
 function seatData(str){
 	var string = str.match(/.{1,1}/g);
 	
@@ -87,17 +74,17 @@ function seatData(str){
 			floor.selectedIndex = 2;
 			break;
 		case "G":
-			console.log("1");
 			floor.selectedIndex = 1;
 			break;
 		case "S":
-			console.log("3");
 			floor.selectedIndex = 3;
 			break;
 	}
 	
 	if(string.length>3 && string[1]=="C" && string[2]=="H"){
+		
 		type.selectedIndex = 1;
+		
 			}
 	else{
 		switch(string[1]){
@@ -114,7 +101,7 @@ function seatData(str){
 	}
 	number.value = string[string.length-1];
 }
-  signup_button.addEventListener('click',(e)=>{
+signup_button.addEventListener('click',(e)=>{
     e.preventDefault();
     createUserWithEmailAndPassword(auth,signup_email.value,signup_password.value)
       .then((cred)=>{
@@ -122,7 +109,6 @@ function seatData(str){
         //window.location.href = "/Seating-Web";
       });
   });
-
 login_button.addEventListener('click', (e)=>{
 	e.preventDefault();
 	if(keep_in.checked){
@@ -150,7 +136,6 @@ login_button.addEventListener('click', (e)=>{
 	}
 	
 });	
-
 logout_button.addEventListener('click', (e)=>{
 	e.preventDefault();
 	signOut(auth).then(() => {
@@ -160,12 +145,10 @@ logout_button.addEventListener('click', (e)=>{
   // An error happened.
 });
 });
-
 onAuthStateChanged(auth, (cred) => {
   if (cred) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
-	  floor.value = "first_floor";
 	  cred_area.style.display = "none";
 	  logout_button.style.display = "block";
 	  seat_data.style.display = "block";
@@ -178,13 +161,7 @@ onAuthStateChanged(auth, (cred) => {
 	  seat_data.style.display = "none";
   }
 });
-
-
-
-
-
-
-  function GetSeat(f,t,n){
+function GetSeat(f,t,n){
     var seat = null;
 
   switch (f)
@@ -217,14 +194,11 @@ onAuthStateChanged(auth, (cred) => {
   }
   return seat + n;
   }
-
-	function UpdateSeat(){
+function UpdateSeat(){
 		    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
 
 	}
-
-
-  function CheckData(event){
+function CheckData(event){
 	event.preventDefault();
     seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
     const dbref = ref(db);
@@ -240,9 +214,7 @@ onAuthStateChanged(auth, (cred) => {
       console.log(error);
     });
   }
-
-
-  function SaveData(){
+function SaveData(){
    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
     set(ref(db, "SeatNumber/"+seatNumber),{
       name:nam.value,
@@ -258,3 +230,13 @@ onAuthStateChanged(auth, (cred) => {
     })
   }
 
+//SEAT ID MAPPING
+
+
+
+var area = document.querySelectorAll('area');
+console.log(area.length);
+area.forEach(elem => elem.addEventListener("click", (e)=>{
+	e.preventDefault();
+	console.log(elem.id);
+}));
