@@ -6,12 +6,14 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, setPersist
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDIhjeL8NcDUSOqqOo9sEOIj2d1npUuOQ8",
-  authDomain: "friendlychat-a001c.firebaseapp.com",
-  projectId: "friendlychat-a001c",
-  storageBucket: "friendlychat-a001c.appspot.com",
-  messagingSenderId: "297611526873",
-  appId: "1:297611526873:web:c5f00ac07a1db3b2c5b4c8"
+  apiKey: "AIzaSyDEoGSXWsvHphRQQoWnKg7o9Q3T2eB9jZ4",
+  authDomain: "indoornavigation-429fd.firebaseapp.com",
+  databaseURL: "https://indoornavigation-429fd-default-rtdb.firebaseio.com",
+  projectId: "indoornavigation-429fd",
+  storageBucket: "indoornavigation-429fd.appspot.com",
+  messagingSenderId: "825368707275",
+  appId: "1:825368707275:web:fae0c6e24365e5f570db4e",
+  measurementId: "${config.measurementId}"
 };
 
 // Initialize Firebase
@@ -40,6 +42,12 @@ const firebaseConfig = {
   var keep_in = document.getElementById("keep_in");
   var cred_area = document.getElementById("cred_area");
   var seat_data = document.getElementById("seat_data");
+  var map_select = document.getElementById("floor_map");
+
+map_select.addEventListener("change",()=>{
+	console.log(map_select.selectedIndex);
+});
+
 
 
 document.getElementById('FE4').addEventListener('click',(e)=>{
