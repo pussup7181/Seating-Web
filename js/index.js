@@ -102,11 +102,16 @@ function seatData(str){
 	}
 	
 	if(string.length>3 && string[1]=="C" && string[2]=="H"){
-		
 		type.selectedIndex = 1;
-		
-			}
+		number.value = string[string.length-1];
+	}
 	else{
+		if(string.length>3 && !isNaN(string[3])){
+			number.value = string[2]+string[3];
+		}
+		else{
+				number.value = string[string.length-1];
+		}
 		switch(string[1]){
 		case "W":
 			type.selectedIndex = 4;
@@ -119,7 +124,6 @@ function seatData(str){
 			break;
 			}
 	}
-	number.value = string[string.length-1];
 }
 signup_button.addEventListener('click',(e)=>{
     e.preventDefault();
