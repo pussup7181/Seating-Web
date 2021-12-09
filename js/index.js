@@ -70,9 +70,6 @@ map_select.addEventListener("change",()=>{
 			break;
 	}
 });
-
-
-
 function fetch_seat(str){
 	const dbref = ref(db);
     get(child(dbref, "SeatNumber/"+str)).then((snapshot)=>{
@@ -217,8 +214,21 @@ function GetSeat(f,t,n){
   }
   return seat + n;
   }
-function UpdateSeat(){
+function UpdateSeat(e){
+	e.preventDefault();
 		    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
+			 update(ref(db, "SeatNumber/"+seatNumber),{
+      name:nam.value,
+      designation:designation.value,
+      floor:floor.options[floor.selectedIndex].text,
+      seatNumber:seatNumber
+    })
+    .then(()=>{
+      alert("Data Successfully Updated");
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
 
 	}
 function CheckData(event){
@@ -254,9 +264,6 @@ function SaveData(){
   }
 
 //SEAT ID MAPPING
-
-
-
 var area = document.querySelectorAll('area');
 console.log(area.length);
 area.forEach(elem => elem.addEventListener("click", (e)=>{
