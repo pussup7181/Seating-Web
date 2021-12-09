@@ -48,18 +48,17 @@ map_select.addEventListener("change",()=>{
 	console.log(map_select.selectedIndex);
 });
 
+//SEAT ID MAPPING
 
-
-document.getElementById('FE4').addEventListener('click',(e)=>{
+document.getElementsByTagName('area').addEventListener('click',(e)=>{
 	e.preventDefault();
 	
-	fetch_seat("FE4");
+	fetch_seat(this.id);
 });
-document.getElementById('GE1').addEventListener('click',(e)=>{
-	e.preventDefault();
-	
-	fetch_seat("GE1");
-});
+
+
+
+
 function fetch_seat(str){
 	const dbref = ref(db);
     get(child(dbref, "SeatNumber/"+str)).then((snapshot)=>{
@@ -82,7 +81,6 @@ function seatData(str){
 	
 	switch(string[0]){
 		case "F":
-			console.log("first_floor");
 			floor.selectedIndex = 2;
 			break;
 		case "G":
@@ -95,7 +93,7 @@ function seatData(str){
 			break;
 	}
 	
-	if(string.length>3){
+	if(string.length>3 && string[1]=="C" && string[2]=="H"){
 		type.selectedIndex = 1;
 			}
 	else{
