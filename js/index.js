@@ -55,7 +55,11 @@ document.getElementById('FE4').addEventListener('click',(e)=>{
 	
 	fetch_seat("FE4");
 });
-
+document.getElementById('GE1').addEventListener('click',(e)=>{
+	e.preventDefault();
+	
+	fetch_seat("GE1");
+});
 function fetch_seat(str){
 	const dbref = ref(db);
     get(child(dbref, "SeatNumber/"+str)).then((snapshot)=>{
