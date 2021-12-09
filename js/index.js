@@ -43,9 +43,32 @@ const firebaseConfig = {
   var cred_area = document.getElementById("cred_area");
   var seat_data = document.getElementById("seat_data");
   var map_select = document.getElementById("floor_map");
+  var ground_floor_map = document.getElementById("ground_floor");
+  var first_floor_map = document.getElementById("first_floor");
+  var second_floor_map = document.getElementById("second_floor");
 
 map_select.addEventListener("change",()=>{
 	console.log(map_select.selectedIndex);
+	switch(map_select.selectedIndex){
+		case 0:
+			console.log("ground");
+			ground_floor_map.style.display = "block";
+			first_floor_map.style.display = "none";
+			second_floor_map.style.display = "none";
+			break;
+		case 1:
+			console.log("first");
+			ground_floor_map.style.display = "none";
+			first_floor_map.style.display = "block";
+			second_floor_map.style.display = "none";
+			break;
+		case 2:
+			console.log("second");
+			ground_floor_map.style.display = "none";
+			first_floor_map.style.display = "none";
+			second_floor_map.style.display = "block";
+			break;
+	}
 });
 
 
@@ -238,5 +261,6 @@ var area = document.querySelectorAll('area');
 console.log(area.length);
 area.forEach(elem => elem.addEventListener("click", (e)=>{
 	e.preventDefault();
+	fetch_seat(elem.id);
 	console.log(elem.id);
 }));
