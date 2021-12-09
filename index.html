@@ -13,12 +13,13 @@
   </head>
   <body>
     <nav class="bg-dark row navbar">
-      <a class="navbar-brand col-md-6 text-white" href="#">Seating Arrangement</a>
-	  <button type="button" class="btn btn-primary m-1" id="logout-button" style="display: none">Log Out</button>
+      <a class="navbar-brand text-white" href="#">Seating Arrangement</a>
+		<div class="nav justify-content-end">
+	  <button type="button" class="btn btn-primary m-1" id="logout-button" style="display: none">Log Out</button></div>
 	</nav>
 	
   <div class="container-fluid pt-5" id="cred_area">
-      <div class="mx-auto col-md-5" >
+      <div class="mx-auto" >
 		<div class="d-flex justify-content-center"><button type="button" class="btn btn-primary m-1"  data-toggle="modal" data-target="#login-form">Log In</button></div>
 		<div class="d-flex justify-content-center"><button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#signup-form">SignUp</button> </div></div></div>
   <!-- Sign In Modal -->
@@ -97,51 +98,79 @@
       </div>
     </div>
   </div>  
-
-	 <div class="container-fluid pt-5" style="display: none" id="seat_data"> 
-	<div><img src="images/0001.jpg" alt="" width="508" height="503" usemap="#FE3" id="first_map"/>
-      <map name="FE3">
-        <area shape="rect" coords="6,142,47,170" id="FE3" target="FE3" alt="First Floor Enclosure 3" style="cursor: pointer">
-      </map>
-	</div>  
-  <div >
-    <form class="mx-auto col-md-5">
-      <div class="form-group">
-		  <label for="name">Name</label>
-		  <input type="text" id="name" placeholder="Name" class="form-control">
-		  <label for="designation">Designation</label>
-		  <input type="text" id="designation" placeholder="Designation" class="form-control">
-		  <label for="floor">Floor</label>
-		  <br>
-		  <select class="form-control" id="floor">
-			<option>Select Floor</option>
-    		<option>GROUND FLOOR</option>
-    		<option>FIRST FLOOR</option>
-    		<option>SECOND FLOOR</option>
-		  </select>
-		  <label for="seat-type">Seat Type</label>
-		  <br>
-		  <select class="form-control" id="seat-type">
-			<option>Select Type</option>
-    		<option>Chamber</option>
-    		<option>Cabin</option>
-    		<option>Enclosure</option>
-			<option>Workstation</option>
-		  </select>
-		  <label for="seat-num">Seat Number</label>
-		  <input type="number" id="seat-num" class="form-control">
+	
+  <div class="container-fluid pt-5" style="display: none" id="seat_data">
+		<form class="col-sm-4">
+			<div class="form-group">
+			  <select class="form-control" id="floor_map">
+				<option value="1">GROUND FLOOR</option>
+				<option value="2">FIRST FLOOR</option>
+				<option value="3">SECOND FLOOR</option>
+			  </select>
+			</div>
+		</form>
+	<div class="container-fluid">
+	  <div class="row">
+		<div class="col-lg-6" id="ground_floor">
+			<img src="images/0001.jpg" alt="" width="500" usemap="#ground_map" id="ground_map"/>
+		 		<map name="ground_map">
+				</map>
 		</div>
-		<button type="submit" class="btn btn-primary" id="add-employee">Add</button>
-      <button type="submit" class="btn btn-primary" id="update-employee">Update</button>
+		  <div class="col-lg-6" id="first_floor">
+			<img src="images/0002.jpg" alt="" width="500" usemap="#first_map" id="first_map"/>
+		 		<map name="first_map">
+					<area shape="rect" coords="6,114,47,140" href="#" id="FE4" alt="First Floor Enclosure 4"  style="cursor: pointer">
+				</map>
+		</div>
+		  <div class="col-lg-6" id="second_floor">
+			<img src="images/0002.jpg" alt="" width="500" usemap="#second_map" id="second_map"/>
+		 		<map name="second_map">
+				</map>
+		</div>
+		<div class="col-lg-6">
+		<form>
+		  <div class="form-group">
+			  <label for="name">Name</label>
+			  <input type="text" id="name" placeholder="Name" class="form-control">
+			  <label for="designation">Designation</label>
+			  <input type="text" id="designation" placeholder="Designation" class="form-control">
+			  <label for="floor">Floor</label>
+			  <br>
+			  <select class="form-control" id="floor">
+				<option>Select Floor</option>
+				<option>GROUND FLOOR</option>
+				<option>FIRST FLOOR</option>
+				<option>SECOND FLOOR</option>
+			  </select>
+			  <label for="seat-type">Seat Type</label>
+			  <br>
+			  <select class="form-control" id="seat-type">
+				<option>Select Type</option>
+				<option>Chamber</option>
+				<option>Cabin</option>
+				<option>Enclosure</option>
+				<option>Workstation</option>
+			  </select>
+			  <label for="seat-num">Seat Number</label>
+			  <input type="number" id="seat-num" class="form-control">
+			</div>
+			<button type="submit" class="btn btn-primary" id="add-employee">Add</button>
+		  <button type="submit" class="btn btn-primary" id="update-employee">Update</button>
 
-    </form>
-  </div></div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+		</form>
+		</div>
+	  </div>
+	</div>
+	</div>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
     <script src="js/jquery-3.4.1.min.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
     <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap-4.4.1.js"></script>
-	  <script type="module" src="js/index.js"></script>
+  	<script src="js/bootstrap-4.4.1.js"></script>
+	<script type="module" src="js/index.js"></script>
+	
+	  
   </body>
 </html>

@@ -29,18 +29,78 @@ const firebaseConfig = {
   var add = document.getElementById("add-employee");
   add.addEventListener('click',CheckData);
   var update_button = document.getElementById("update-employee");
-	update_button.addEventListener('click', UpdateSeat);
+  update_button.addEventListener('click', UpdateSeat);
   var signup_email = document.getElementById("signup-email");
   var signup_password = document.getElementById("signup-password");
-const login_email = document.getElementById("login-email");
+  const login_email = document.getElementById("login-email");
   const login_password = document.getElementById("login-password");
   var signup_button = document.getElementById("signup-button");
   var login_button = document.getElementById("login-button");
   var logout_button = document.getElementById("logout-button");
-var keep_in = document.getElementById("keep_in");
-var cred_area = document.getElementById("cred_area");
-var seat_data = document.getElementById("seat_data");
+  var keep_in = document.getElementById("keep_in");
+  var cred_area = document.getElementById("cred_area");
+  var seat_data = document.getElementById("seat_data");
 
+
+document.getElementById('FE4').addEventListener('click',(e)=>{
+	e.preventDefault();
+	
+	fetch_seat("FE4");
+});
+
+function fetch_seat(str){
+	const dbref = ref(db);
+    get(child(dbref, "SeatNumber/"+str)).then((snapshot)=>{
+      if(snapshot.exists()){
+		  nam.value = snapshot.val().name;
+		  designation.value = snapshot.val().designation;
+		  seatData(str);
+      }
+      else{
+		  alert("Seat Empty");
+      }
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+}
+
+function seatData(str){
+	var string = str.match(/.{1,1}/g);
+	
+	switch(string[0]){
+		case "F":
+			console.log("first_floor");
+			floor.selectedIndex = 2;
+			break;
+		case "G":
+			console.log("1");
+			floor.selectedIndex = 1;
+			break;
+		case "S":
+			console.log("3");
+			floor.selectedIndex = 3;
+			break;
+	}
+	
+	if(string.length>3){
+		type.selectedIndex = 1;
+			}
+	else{
+		switch(string[1]){
+		case "W":
+			type.selectedIndex = 4;
+			break;
+		case "E":
+			type.selectedIndex = 3;
+			break;
+		case "C":
+			type.selectedIndex = 2;
+			break;
+			}
+	}
+	number.value = string[string.length-1];
+}
   signup_button.addEventListener('click',(e)=>{
     e.preventDefault();
     createUserWithEmailAndPassword(auth,signup_email.value,signup_password.value)
@@ -92,7 +152,7 @@ onAuthStateChanged(auth, (cred) => {
   if (cred) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = cred.uid;
+	  floor.value = "first_floor";
 	  cred_area.style.display = "none";
 	  logout_button.style.display = "block";
 	  seat_data.style.display = "block";
@@ -105,6 +165,8 @@ onAuthStateChanged(auth, (cred) => {
 	  seat_data.style.display = "none";
   }
 });
+
+
 
 
 
@@ -182,3 +244,4 @@ onAuthStateChanged(auth, (cred) => {
       console.log(error);
     })
   }
+
