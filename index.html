@@ -14,7 +14,7 @@
   </head>
   <body>
     <nav class="bg-dark row navbar">
-      <a class="navbar-brand text-white" href="#">Seating Arrangement</a>
+      <a class="navbar-brand text-white mx-5" href="#">Seating Arrangement</a>
 		<div class="nav justify-content-end">
 	  <button type="button" class="btn btn-primary m-1" id="logout-button" style="display: none">Log Out</button></div>
 	</nav>
@@ -100,7 +100,7 @@
     </div>
   </div>  
 	
-  <div class="container-fluid pt-5" style="display: block" id="seat_data">
+  <div class="container-fluid pt-5" style="display: none" id="seat_data">
 		<form class="col-sm-4">
 			<div class="form-group">
 			  <select class="form-control" id="floor_map">
@@ -409,6 +409,8 @@
 			</div>
 		<button type="submit" class="btn btn-primary" id="add-employee">Add</button>
 		<button type="submit" class="btn btn-primary" id="update-employee">Update</button>
+		<button type="submit" class="btn btn-primary" id="empty-employee">Delete</button>
+
 
 		</form>
 		</div>

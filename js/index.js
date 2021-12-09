@@ -30,6 +30,8 @@ const firebaseConfig = {
   var seatNumber;
   var add = document.getElementById("add-employee");
   add.addEventListener('click',CheckData);
+  var delete_button = document.getElementById("empty-employee");
+  delete_button.addEventListener('click', empty_seat);
   var update_button = document.getElementById("update-employee");
   update_button.addEventListener('click', UpdateSeat);
   var signup_email = document.getElementById("signup-email");
@@ -80,6 +82,12 @@ function fetch_seat(str){
       }
       else{
 		  alert("Seat Empty");
+		  nam.value="";
+		designation.value="";
+		floor.selectedIndex = 0;
+		type.selectedIndex = 0;
+		number.value = "";
+      
       }
     })
     .catch((error)=>{
@@ -241,8 +249,8 @@ function CheckData(event){
     const dbref = ref(db);
     get(child(dbref, "SeatNumber/"+seatNumber)).then((snapshot)=>{
       if(snapshot.exists()){
-        alert("Seat Taken");   
-      }
+        alert("Seat Taken");
+	  }
       else{
         SaveData();
       }
@@ -266,7 +274,13 @@ function SaveData(){
       console.log(error);
     })
   }
-
+function empty_seat(){
+event.preventDefault();
+    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
+    const dbref = ref(db);
+    remove(child(dbref, "SeatNumber/"+seatNumber));
+	alert("Data Deleted Successfully");
+}
 //SEAT ID MAPPING
 var area = document.querySelectorAll('area');
 console.log(area.length);
