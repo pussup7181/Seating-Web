@@ -50,11 +50,14 @@ map_select.addEventListener("change",()=>{
 
 //SEAT ID MAPPING
 
-document.getElementsByTagName('area').addEventListener('click',(e)=>{
+var area = document.getElementsByTagName('area');
+
+for(int i=0;i<area.length;i++){
+	area[i].addEventListener('click',(e)=>{
 	e.preventDefault();
 	
-	fetch_seat(this.id);
-});
+	fetch_seat(area[i].id);
+});}
 
 
 
