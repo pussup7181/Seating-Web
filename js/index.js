@@ -299,8 +299,6 @@ area.forEach(elem => elem.addEventListener("click", (e)=>{
 	fetch_seat(elem.id);
 	console.log(elem.id);
 }));
-
-
 function data_table(){
 	var table_data = document.querySelectorAll('td');
 	console.log(table_data.length);
