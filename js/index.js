@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, signOut} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";// TODO: Add SDKs for Firebase products that you want to use
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, signOut, updatePassword} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";// TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -40,7 +40,10 @@ const firebaseConfig = {
   const login_password = document.getElementById("login-password");
   var signup_button = document.getElementById("signup-button");
   var login_button = document.getElementById("login-button");
+  var user_utility = document.getElementById("user_utility");
   var logout_button = document.getElementById("logout-button");
+  //var refresh_button = document.getElementById("refresh-button");
+  //refresh_button.addEventListener('click',data_table);
   var keep_in = document.getElementById("keep_in");
   var cred_area = document.getElementById("cred_area");
   var seat_data = document.getElementById("seat_data");
@@ -48,6 +51,9 @@ const firebaseConfig = {
   var ground_floor_map = document.getElementById("ground_floor");
   var first_floor_map = document.getElementById("first_floor");
   var second_floor_map = document.getElementById("second_floor");
+  var table_ground = document.getElementById("table-ground");
+  var table_first = document.getElementById("table-first");
+  var table_second = document.getElementById("table-second");
 
 map_select.addEventListener("change",()=>{
 	console.log(map_select.selectedIndex);
@@ -57,18 +63,27 @@ map_select.addEventListener("change",()=>{
 			ground_floor_map.style.display = "block";
 			first_floor_map.style.display = "none";
 			second_floor_map.style.display = "none";
+			table_ground.style.display = "block";
+			table_first.style.display = "none";
+			table_second.style.display = "none";
 			break;
 		case 1:
 			console.log("first");
 			ground_floor_map.style.display = "none";
 			first_floor_map.style.display = "block";
 			second_floor_map.style.display = "none";
+			table_ground.style.display = "none";
+			table_first.style.display = "block";
+			table_second.style.display = "none";
 			break;
 		case 2:
 			console.log("second");
 			ground_floor_map.style.display = "none";
 			first_floor_map.style.display = "none";
 			second_floor_map.style.display = "block";
+			table_ground.style.display = "none";
+			table_first.style.display = "none";
+			table_second.style.display = "block";
 			break;
 	}
 });
@@ -143,29 +158,13 @@ signup_button.addEventListener('click',(e)=>{
   });
 login_button.addEventListener('click', (e)=>{
 	e.preventDefault();
-	if(keep_in.checked){
-		setPersistence(auth, browserSessionPersistence)
-  .then(() => {
-    // Existing and future Auth states are now persisted in the current
-    // session only. Closing the window would clear any existing state even
-    // if a user forgets to sign out.
-    // ...
-    // New sign-in will be persisted with session persistence.
-			console.log("There");
-    return signInWithEmailAndPassword(auth, login_email.value, login_password.value);
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-	}
-	else{
+	
 		console.log("no-there");
 		signInWithEmailAndPassword(auth,login_email.value,login_password.value).then((cred)=>{
 		console.log(cred);
-	});
-	}
+	}).catch((error)=>{
+      alert("Wrong Credentials");
+    });
 	
 });	
 logout_button.addEventListener('click', (e)=>{
@@ -181,16 +180,24 @@ onAuthStateChanged(auth, (cred) => {
   if (cred) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
+	  data_table();
 	  cred_area.style.display = "none";
-	  logout_button.style.display = "block";
+	  user_utility.style.display = "block";
 	  seat_data.style.display = "block";
+	  table_ground.style.display = "block";
+	  table_first.style.display = "none";
+	  table_second.style.display = "none";
+	  
     // ...
   } else {
     // User is signed out
     // ...
 	  cred_area.style.display = "block";
-	  logout_button.style.display = "none";
+	  user_utility.style.display = "none";
 	  seat_data.style.display = "none";
+	  table_ground.style.display = "none";
+	  table_first.style.display = "none";
+	  table_second.style.display = "none";
   }
 });
 function GetSeat(f,t,n){
@@ -236,6 +243,7 @@ function UpdateSeat(e){
       seatNumber:seatNumber
     })
     .then(()=>{
+				 data_table();
       alert("Data Successfully Updated");
     })
     .catch((error)=>{
@@ -281,6 +289,8 @@ event.preventDefault();
     remove(child(dbref, "SeatNumber/"+seatNumber));
 	alert("Data Deleted Successfully");
 }
+
+
 //SEAT ID MAPPING
 var area = document.querySelectorAll('area');
 console.log(area.length);
@@ -289,3 +299,38 @@ area.forEach(elem => elem.addEventListener("click", (e)=>{
 	fetch_seat(elem.id);
 	console.log(elem.id);
 }));
+
+
+function data_table(){
+	var table_data = document.querySelectorAll('td');
+	console.log(table_data.length);
+	table_data.forEach(elem =>{
+	var str = elem.id;
+	if(str!=""){
+		var tid = str.match(/.{1,1}/g);
+		var id = null;
+		for(var i = 1; i<tid.length;i++){
+			if(id!=null){
+				id += tid[i];
+			}else id = tid[i];
+		}
+		
+		const dbref = ref(db);
+    get(child(dbref, "SeatNumber/"+id)).then((snapshot)=>{
+      if(snapshot.exists()){
+		  elem.innerHTML = snapshot.val().seatNumber+" - "+snapshot.val().name+"<br />"+snapshot.val().designation;
+      }
+      else{
+		  elem.innerHTML = id+" - Vacant";
+      
+      }
+    })
+    .catch((error)=>{
+      console.log(error);
+    });
+	}
+		
+	
+				   });
+}
+

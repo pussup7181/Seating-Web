@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,58 +8,64 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="css/index.css" rel="stylesheet">
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+	<script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    </head>
+<body>
+	<nav class="bg-dark row navbar fixed-top">
+      <a class="navbar-brand  text-white mx-5" href="#">Seating Arrangement</a>
+		<div class="nav justify-content-end" id="user_utility"  style="display: none">
+	  <button type="button" class="btn btn-primary m-1" id="logout-button">Log Out</button>
+		<!--<button type="button" class="btn btn-primary m-1" id="refresh-button">Refresh</button>-->
 
-
-  </head>
-  <body>
-    <nav class="bg-dark row navbar">
-      <a class="navbar-brand text-white mx-5" href="#">Seating Arrangement</a>
-		<div class="nav justify-content-end">
-	  <button type="button" class="btn btn-primary m-1" id="logout-button" style="display: none">Log Out</button></div>
+		</div>
 	</nav>
-	
-  <div class="container-fluid pt-5" id="cred_area">
-      <div class="mx-auto" >
-		<div class="d-flex justify-content-center"><button type="button" class="btn btn-primary m-1"  data-toggle="modal" data-target="#login-form">Log In</button></div>
-		<div class="d-flex justify-content-center"><button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#signup-form">SignUp</button> </div></div></div>
+	<div class="container-fluid pt-5" id="cred_area">
+		<div class="mx-auto" >
+			<div class="d-flex justify-content-center">
+				<button type="button" class="btn btn-primary m-1"  data-toggle="modal" data-target="#login-form">Log In</button>
+			</div>
+		<div class="d-flex justify-content-center">
+			<!--<button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#signup-form">SignUp</button></div> -->
+		</div>
+	</div>
   <!-- Sign In Modal -->
-  <div class="modal" id="login-form">
-    <div class="mdal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Log-In</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-				
-              <label for="login-email">Email address</label>
-              <input type="email" class="form-control" id="login-email" placeholder="Enter email">
-            
-              <label for="login-password">Password</label>
-              <input type="password" class="form-control" id="login-password" placeholder="Password">
-            
-		    </div>
-		    <input type="checkbox" class="m-1" id="keep_in">Keep Me Signed In<br>
-            <button type="submit" class="btn btn-primary" id="login-button" data-dismiss="modal">Login</button>
-          </form>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div> 
-	  
+	<div class="modal" id="login-form">
+		<div class="mdal-dialog">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Log-In</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="login-email">Email address</label>
+							<input type="email" class="form-control" id="login-email" placeholder="Enter email">
+							<label for="login-password">Password</label>
+							<input type="password" class="form-control" id="login-password" placeholder="Password">
+
+				</div>
+				<button type="submit" class="btn btn-primary" id="login-button" data-dismiss="modal">Login</button>
+			  </form>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
+			</div>
+
+		  </div>
+		</div>
+	  </div> 
+
 	  <!-- Sign Up Modal -->
   <div class="modal" id="signup-form">
     <div class="modal-dialog">
@@ -99,8 +105,9 @@
       </div>
     </div>
   </div>  
-	
-  <div class="container-fluid pt-5" style="display: none" id="seat_data">
+	</div>
+  	<div class="container-fluid mt-5 pt-5" style="display: none" id="seat_data" >
+		<div class="row">
 		<form class="col-sm-4">
 			<div class="form-group">
 			  <select class="form-control" id="floor_map">
@@ -109,7 +116,12 @@
 				<option value="3">SECOND FLOOR</option>
 			  </select>
 			</div>
+
 		</form>
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-primary " id="print-button" >Print to PDF</button>
+			</div>
+		</div>
 	<div class="container-fluid">
 	  <div class="row">
 		<div class="col-lg-6" id="ground_floor">
@@ -418,6 +430,451 @@
 	</div>
 	</div>
 	
+
+	<!-- PDF -->
+	<div class="container-fluid p-5">
+	<div id="table-ground" style="display: none">
+		<table border="2px" id="ground-pdf">
+		<tr>
+			<th colspan="6">
+			Accomodation - Ground Floor
+			</th>
+		</tr>
+		<tr>
+			<th>Cabin</th>
+			<th>Enclosure</th>
+			<th colspan="4">Workstation</th>
+			
+		</tr>
+		<tr>
+			<td id="TGC1"></td>
+			<td id="TGE1"></td>
+			<td>GW1 - Workstaion Not Available</td>
+			<td id="TGW10"></td>
+			<td id="TGW19"></td>
+			<td id="TGW28"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TGE2"></td>
+			<td>GW2 - Workstaion Not Available</td>
+			<td id="TGW11"></td>
+			<td id="TGW20"></td>
+			<td id="TGW29"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TGE3"></td>
+			<td>GW3 - Workstaion Not Available</td>
+			<td id="TGW12"></td>
+			<td id="TGW21"></td>
+			<td id="TGW30"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TGE4"></td>
+			<td id="TGW4"></td>
+			<td id="TGW13"></td>
+			<td id="TGW22"></td>
+			<td id="TGW31"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TGE5"></td>
+			<td id="TGW5"></td>
+			<td id="TGW14"></td>
+			<td id="TGW23"></td>
+			<td id="TGW32"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TGE6"></td>
+			<td id="TGW6"></td>
+			<td id="TGW15"></td>
+			<td id="TGW24"></td>
+			<td id="TGW33"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td id="TGW7"></td>
+			<td>GW16 - Workstation Not Available</td>
+			<td id="TGW25"></td>
+			<td id="TGW34"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td id="TGW8"></td>
+			<td id="TGW17"></td>
+			<td id="TGW26"></td>
+			<td id="TGW35"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td id="TGW9"></td>
+			<td id="TGW18"></td>
+			<td id="TGW27"></td>
+			<td id="TGW36"></td>
+		</tr>
+		</table>
+	</div>
+	<div id="table-first" style="display: none">
+		<table border="2px" id="first-pdf">
+		<tr>
+			<th colspan="7">
+			Accomodation - First Floor
+			</th>
+		</tr>
+		<tr>
+			<th>Cabin</th>
+			<th colspan="2">Enclosure</th>
+			<th colspan="4">Workstation</th>
+			
+		</tr>
+		<tr>
+			<td id="TFC1"></td>
+			<td id="TFE1"></td>
+			<td id="TFE22"></td>
+			<td id="TFW1"></td>
+			<td id="TFW22"></td>
+			<td id="TFW43"></td>
+			<td id="TFW64"></td>
+		</tr>
+		<tr>
+			<td id="TFC2"></td>
+			<td id="TFE2"></td>
+			<td id="TFE23"></td>
+			<td id="TFW2"></td>
+			<td id="TFW23"></td>
+			<td id="TFW44"></td>
+			<td id="TFW65"></td>
+		</tr>
+		<tr>
+			<td id="TFC3"></td>
+			<td id="TFE3"></td>
+			<td id="TFE24"></td>
+			<td id="TFW3"></td>
+			<td id="TFW24"></td>
+			<td id="TFW45"></td>
+			<td id="TFW66"></td>
+		</tr>
+		<tr>
+			<td id="TFC4"></td>
+			<td id="TFE4"></td>
+			<td id="TFE25"></td>
+			<td id="TFW4"></td>
+			<td id="TFW25"></td>
+			<td id="TFW46"></td>
+			<td id="TFW67"></td>
+		</tr>
+		<tr>
+			<td id="TFC5"></td>
+			<td id="TFE5"></td>
+			<td id="TFE26"></td>
+			<td id="TFW5"></td>
+			<td id="TFW26"></td>
+			<td id="TFW47"></td>
+			<td id="TFW68"></td>
+		</tr>
+		<tr>
+			<td id="TFC6"></td>
+			<td id="TFE6"></td>
+			<td id="TFE27"></td>
+			<td id="TFW6"></td>
+			<td id="TFW27"></td>
+			<td id="TFW48"></td>
+			<td id="TFW69"></td>
+		</tr>
+		<tr>
+			<td id="TFC7"></td>
+			<td id="TFE7"></td>
+			<td id="TFE28"></td>
+			<td id="TFW7"></td>
+			<td id="TFW28"></td>
+			<td id="TFW49"></td>
+			<td id="TFW70"></td>
+		</tr>
+		<tr>
+			<td id="TFC8"></td>
+			<td id="TFE8"></td>
+			<td id="TFE29"></td>
+			<td id="TFW8"></td>
+			<td id="TFW29"></td>
+			<td id="TFW50"></td>
+			<td id="TFW71"></td>
+		</tr>
+		<tr>
+			<td id="TFC9"></td>
+			<td id="TFE9"></td>
+			<td id="TFE30"></td>
+			<td id="TFW9"></td>
+			<td id="TFW30"></td>
+			<td id="TFW51"></td>
+			<td id="TFW72"></td>
+		</tr>
+		<tr>
+			<td id="TFC10"></td>
+			<td id="TFE10"></td>
+			<td id="TFE31"></td>
+			<td id="TFW10"></td>
+			<td id="TFW31"></td>
+			<td id="TFW52"></td>
+			<td id="TFW73"></td>
+		</tr>
+		<tr>
+			<td id="TFC11"></td>
+			<td id="TFE11"></td>
+			<td id="TFE32"></td>
+			<td id="TFW11"></td>
+			<td id="TFW32"></td>
+			<td id="TFW53"></td>
+			<td id="TFW74"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE12"></td>
+			<td id="TFE33"></td>
+			<td id="TFW12"></td>
+			<td id="TFW33"></td>
+			<td id="TFW54"></td>
+			<td id="TFW75"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE13"></td>
+			<td id="TFE34"></td>
+			<td id="TFW13"></td>
+			<td id="TFW34"></td>
+			<td id="TFW55"></td>
+			<td id="TFW76"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE14"></td>
+			<td id="TFE35"></td>
+			<td id="TFW14"></td>
+			<td id="TFW35"></td>
+			<td id="TFW56"></td>
+			<td id="TFW77"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE15"></td>
+			<td id="TFE36"></td>
+			<td id="TFW15"></td>
+			<td id="TFW36"></td>
+			<td id="TFW57"></td>
+			<td id="TFW78"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE16"></td>
+			<td id="TFE37"></td>
+			<td id="TFW16"></td>
+			<td id="TFW37"></td>
+			<td id="TFW58"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE17"></td>
+			<td id="TFE38"></td>
+			<td id="TFW17"></td>
+			<td id="TFW38"></td>
+			<td id="TFW59"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE18"></td>
+			<td id="TFE39"></td>
+			<td id="TFW18"></td>
+			<td id="TFW39"></td>
+			<td id="TFW60"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE19"></td>
+			<td id="TFE40"></td>
+			<td id="TFW19"></td>
+			<td id="TFW40"></td>
+			<td id="TFW61"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE20"></td>
+			<td id="TFE41"></td>
+			<td id="TFW20"></td>
+			<td id="TFW41"></td>
+			<td id="TFW62"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TFE21"></td>
+			<td></td>
+			<td id="TFW21"></td>
+			<td id="TFW42"></td>
+			<td id="TFW63"></td>
+			<td></td>
+		</tr>
+		</table>
+	</div>
+	<div id="table-second" style="display: none">
+	<table border="2px" id ="second-pdf">
+		<tr>
+			<th colspan="7">
+			Accomodation - Second Floor
+			</th>
+		</tr>
+		<tr>
+			<th>Chamber/Cabin</th>
+			<th colspan="2">Enclosure</th>
+			<th colspan="4">Workstation</th>	
+		</tr>
+		<tr>
+			<td id="TSCH1"></td>
+			<td id="TSE1"></td>
+			<td id="TSE16"></td>
+			<td id="TSW1"></td>
+			<td id="TSW16"></td>
+			<td id="TSW31"></td>
+			<td id="TSW46"></td>
+		</tr>
+		<tr>
+			<td id="TSCH2"></td>
+			<td id="TSE2"></td>
+			<td id="TSE17"></td>
+			<td id="TSW2"></td>
+			<td id="TSW17"></td>
+			<td id="TSW32"></td>
+			<td id="TSW47"></td>
+		</tr>
+		<tr>
+			<td id="TSCH3"></td>
+			<td id="TSE3"></td>
+			<td id="TSE18"></td>
+			<td id="TSW3"></td>
+			<td id="TSW18"></td>
+			<td id="TSW33"></td>
+			<td id="TSW48"></td>
+		</tr>
+		<tr>
+			<td id="TSCH4"></td>
+			<td id="TSE4"></td>
+			<td id="TSE19"></td>
+			<td id="TSW4"></td>
+			<td id="TSW19"></td>
+			<td id="TSW34"></td>
+			<td id="TSW49"></td>
+		</tr>
+		<tr>
+			<td id="TSCH5"></td>
+			<td id="TSE5"></td>
+			<td id="TSE20"></td>
+			<td id="TSW5"></td>
+			<td id="TSW20"></td>
+			<td id="TSW35"></td>
+			<td id="TSW50"></td>
+		</tr>
+		<tr>
+			<td id="TSCH6"></td>
+			<td id="TSE6"></td>
+			<td id="TSE21"></td>
+			<td id="TSW6"></td>
+			<td id="TSW21"></td>
+			<td id="TSW36"></td>
+			<td id="TSW51"></td>
+		</tr>
+		<tr>
+			<td id="TSC1"></td>
+			<td id="TSE7"></td>
+			<td id="TSE22"></td>
+			<td id="TSW7"></td>
+			<td id="TSW22"></td>
+			<td id="TSW37"></td>
+			<td id="TSW52"></td>
+		</tr>
+		<tr>
+			<td id="TSC2"></td>
+			<td id="TSE8"></td>
+			<td id="TSE23"></td>
+			<td id="TSW8"></td>
+			<td id="TSW23"></td>
+			<td id="TSW38"></td>
+			<td id="TSW53"></td>
+		</tr>
+		<tr>
+			<td id="TSC3"></td>
+			<td id="TSE9"></td>
+			<td id="TSE24"></td>
+			<td id="TSW9"></td>
+			<td id="TSW24"></td>
+			<td id="TSW39"></td>
+			<td id="TSW54"></td>
+		</tr>
+		<tr>
+			<td id="TSC4"></td>
+			<td id="TSE10"></td>
+			<td id="TSE25"></td>
+			<td id="TSW10"></td>
+			<td id="TSW25"></td>
+			<td id="TSW40"></td>
+			<td id="TSW55"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TSE11"></td>
+			<td id="TSE26"></td>
+			<td id="TSW11"></td>
+			<td id="TSW26"></td>
+			<td id="TSW41"></td>
+			<td id="TSW56"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TSE12"></td>
+			<td id="TSE27"></td>
+			<td id="TSW12"></td>
+			<td id="TSW27"></td>
+			<td id="TSW42"></td>
+			<td id="TSW57"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TSE13"></td>
+			<td></td>
+			<td id="TSW13"></td>
+			<td id="TSW28"></td>
+			<td id="TSW43"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TSE14"></td>
+			<td></td>
+			<td id="TSW14"></td>
+			<td id="TSW29"></td>
+			<td id="TSW44"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td id="TSE15"></td>
+			<td></td>
+			<td id="TSW15"></td>
+			<td id="TSW30"></td>
+			<td id="TSW45"></td>
+			<td></td>
+		</tr>
+		</table>
+	</div>
+		</div>
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
     <script src="js/jquery-3.4.1.min.js"></script>
 
@@ -425,7 +882,17 @@
     <script src="js/popper.min.js"></script>
   	<script src="js/bootstrap-4.4.1.js"></script>
 	<script type="module" src="js/index.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+    <script src="./js/tableHTMLExport.js"></script>
 	
+	<script type="text/javascript">
+      
+        $("#print-button").on("click", function () {
+        	$("#ground-pdf").tableHTMLExport({ type: "pdf", filename: "sample.pdf", orientation:'l', htmlContent:"true"
+ })});
+    
+    </script>
 	  
   </body>
 </html>
