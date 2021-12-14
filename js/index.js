@@ -276,6 +276,7 @@ function SaveData(){
       seatNumber:seatNumber
     })
     .then(()=>{
+		data_table();
       alert("Data Successfully uploaded");
     })
     .catch((error)=>{
@@ -287,6 +288,7 @@ event.preventDefault();
     seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
     const dbref = ref(db);
     remove(child(dbref, "SeatNumber/"+seatNumber));
+	data_table();
 	alert("Data Deleted Successfully");
 }
 
@@ -299,9 +301,18 @@ area.forEach(elem => elem.addEventListener("click", (e)=>{
 	fetch_seat(elem.id);
 	console.log(elem.id);
 }));
+
+
 function data_table(){
 	var table_data = document.querySelectorAll('td');
-	console.log(table_data.length);
+	var vacant_cabin = 0;
+	var vacant_workstation =0;
+	var vacant_enclosure =0;
+	var vacant_chamber =0;
+	var total_cabin = 0;
+	var total_workstation =0;
+	var total_enclosure =0;
+	var total_chamber =0;
 	table_data.forEach(elem =>{
 	var str = elem.id;
 	if(str!=""){
@@ -312,13 +323,14 @@ function data_table(){
 				id += tid[i];
 			}else id = tid[i];
 		}
-		
 		const dbref = ref(db);
     get(child(dbref, "SeatNumber/"+id)).then((snapshot)=>{
       if(snapshot.exists()){
 		  elem.innerHTML = snapshot.val().seatNumber+" - "+snapshot.val().name+"<br />"+snapshot.val().designation;
+		  
       }
       else{
+ 			
 		  elem.innerHTML = id+" - Vacant";
       
       }
@@ -326,9 +338,8 @@ function data_table(){
     .catch((error)=>{
       console.log(error);
     });
-	}
-		
+	}});
 	
-				   });
+	
 }
 

@@ -1,9 +1,11 @@
-tr:nth-child(even) {
+/*tr:nth-child(even) {
   background-color: rgba(150, 212, 212, 0.4);
-}
+}*/
 
 th{
 	text-align: center;
+	background-color: rgba(189,217,255,0.64);
+
 }
 
 
