@@ -430,9 +430,10 @@
 	</div>
 	</div>
 	<!-- PDF -->
-	<div class="p-5" style="width: 800px">
+	<div class="p-5" style="width:800px;">
 		<div id="table-ground" style="display: none" class="container">
 		<table border="2px" id="ground-pdf">
+		<tr height="50px"></tr>
 		<tr>
 			<th colspan="6">
 			Accomodation - Ground Floor
@@ -564,10 +565,12 @@
 				<td></td>
 				<td></td>
 			</tr>
+			<tr height="50px"></tr>
 		</table>
 	</div>
 		<div id="table-first" style="display: none">
 		<table border="2px" id="first-pdf">
+		<tr height="50px"></tr>
 		<tr>
 			<th colspan="7">
 			Accomodation - First Floor
@@ -823,10 +826,12 @@
 				<td></td>
 				<td></td>
 			</tr>
+			<tr height="50px"></tr>
 		</table>
 	</div>
 		<div id="table-second" style="display: none">
 	<table border="2px" id ="second-pdf">
+		<tr height="50px"></tr>
 		<tr>
 			<th colspan="7">
 			Accomodation - Second Floor
@@ -1033,6 +1038,7 @@
 				<td></td>
 				<td></td>
 			</tr>
+		<tr height="50px"></tr>
 		</table>
 	</div>
 	</div>
@@ -1051,8 +1057,14 @@
 		window.jsPDF = window.jspdf.jsPDF;
 		
 		document.getElementById("print-button").addEventListener('click',()=>{
-					var doc = new jsPDF({orientation: "p",unit:"mm",format: "A3"});
-
+			var ground_pdf = document.getElementById("ground-pdf");
+			var first_pdf = document.getElementById("first-pdf");
+			var second_pdf = document.getElementById("second-pdf");
+			var doc = new jsPDF({orientation: "l",unit:"px",format: "A4"});
+			
+			ground_pdf.width = 1200;
+			first_pdf.width = 1800;
+			second_pdf.width = 1600;
 			/*doc.html(document.getElementById("ground-pdf"), {
    			callback: function (doc) {
      		doc.save();
@@ -1069,26 +1081,25 @@
 				case "3": id = "second-pdf"; file_name="Second_Floor_Seating_Plan_"+Date()+"_.pdf";break;
 			}
 			html2canvas(document.getElementById(id)).then(function(canvas){
-				
-
-			
-        let width = doc.internal.pageSize.getWidth()
-let height = doc.internal.pageSize.getHeight()
-
-let widthRatio = width / canvas.width;
-let heightRatio = height / canvas.height;
-
-let ratio = widthRatio > heightRatio ? heightRatio : widthRatio
-
-        doc.addImage(
-  canvas.toDataURL('image/jpeg', 1.0),
-  'JPEG',
-  0,
-  0,
-  canvas.width * ratio,
-  canvas.height * ratio,
-);
-        doc.save(file_name);
+				let width = doc.internal.pageSize.getWidth()
+				let height = doc.internal.pageSize.getHeight()
+				let widthRatio = width / canvas.width;
+				let heightRatio = height / canvas.height;
+				let ratio = widthRatio > heightRatio ? heightRatio : widthRatio
+				console.log(width);
+				console.log(canvas.width*ratio);
+				doc.addImage(
+  					canvas.toDataURL('image/jpeg', 1.0),
+  					'JPEG',
+				  	(width-(canvas.width * ratio))/2,
+				  	0,
+				  	canvas.width * ratio,
+				  	canvas.height * ratio,
+				);
+        		doc.save(file_name);
+				ground_pdf.width = 800;
+			first_pdf.width = 800;
+			second_pdf.width = 800;
 
 			});
 		});
