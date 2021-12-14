@@ -56,10 +56,8 @@ const firebaseConfig = {
   var table_second = document.getElementById("table-second");
 
 map_select.addEventListener("change",()=>{
-	console.log(map_select.selectedIndex);
 	switch(map_select.selectedIndex){
 		case 0:
-			console.log("ground");
 			ground_floor_map.style.display = "block";
 			first_floor_map.style.display = "none";
 			second_floor_map.style.display = "none";
@@ -68,7 +66,6 @@ map_select.addEventListener("change",()=>{
 			table_second.style.display = "none";
 			break;
 		case 1:
-			console.log("first");
 			ground_floor_map.style.display = "none";
 			first_floor_map.style.display = "block";
 			second_floor_map.style.display = "none";
@@ -77,7 +74,6 @@ map_select.addEventListener("change",()=>{
 			table_second.style.display = "none";
 			break;
 		case 2:
-			console.log("second");
 			ground_floor_map.style.display = "none";
 			first_floor_map.style.display = "none";
 			second_floor_map.style.display = "block";
@@ -305,13 +301,19 @@ area.forEach(elem => elem.addEventListener("click", (e)=>{
 
 function data_table(){
 	var table_data = document.querySelectorAll('td');
-	var vacant_cabin = 0;
-	var vacant_workstation =0;
-	var vacant_enclosure =0;
-	var vacant_chamber =0;
+	var g_vacant_cabin = 0;
+	var f_vacant_cabin = 0;
+	var s_vacant_cabin = 0;
+	var g_vacant_workstation =0;
+	var f_vacant_workstation =0;
+	var s_vacant_workstation =0;
+	var g_vacant_enclosure =0;
+	var f_vacant_enclosure =0;
+	var s_vacant_enclosure =0;
+	var s_vacant_chamber =0;
 	var total_cabin = 0;
 	var total_workstation =0;
-	var total_enclosure =0;
+	var second_enclosure =0;
 	var total_chamber =0;
 	table_data.forEach(elem =>{
 	var str = elem.id;
@@ -330,7 +332,58 @@ function data_table(){
 		  
       }
       else{
- 			
+		  switch(tid[1]){
+			  case "S":switch(tid[2]){
+				  case "E":
+					  s_vacant_enclosure +=1;
+					  document.getElementsByName('se-vacant')[0].innerHTML = s_vacant_enclosure;
+					  break;
+				  case "W":
+					  s_vacant_workstation +=1;
+					  document.getElementsByName('sw-vacant')[0].innerHTML = s_vacant_workstation;
+					  break;
+				  case "C":if(tid[3]=="H"){
+					  s_vacant_chamber +=1;
+					  document.getElementsByName('sch-vacant')[0].innerHTML = s_vacant_chamber;
+				  } else{
+					  s_vacant_cabin +=1;
+					  document.getElementsByName('sc-vacant')[0].innerHTML = s_vacant_cabin;
+					  
+				  }
+					  break;
+					  
+			  }break;
+			  case "F":switch(tid[2]){
+					  case "E":
+					  f_vacant_enclosure +=1;
+					  document.getElementsByName('fe-vacant')[0].innerHTML = f_vacant_enclosure;
+					  break;
+				  case "W":
+					  f_vacant_workstation +=1;
+					  document.getElementsByName('fw-vacant')[0].innerHTML = f_vacant_workstation;
+					  break;
+				  case "C":
+					  f_vacant_cabin +=1;
+					  document.getElementsByName('fc-vacant')[0].innerHTML = f_vacant_cabin;
+					  break;
+			  }break;
+				case "G":switch(tid[2]){
+					  case "E":
+					  g_vacant_enclosure +=1;
+					  document.getElementsByName('ge-vacant')[0].innerHTML = g_vacant_enclosure;
+					  break;
+				  case "W":
+					  g_vacant_workstation +=1;
+					  document.getElementsByName('gw-vacant')[0].innerHTML = g_vacant_workstation;
+					  break;
+				  case "C":
+					  g_vacant_cabin +=1;
+					  document.getElementsByName('gc-vacant')[0].innerHTML = g_vacant_cabin;
+					  break;
+			  }break;
+		  }
+ 		
+
 		  elem.innerHTML = id+" - Vacant";
       
       }
@@ -338,7 +391,9 @@ function data_table(){
     .catch((error)=>{
       console.log(error);
     });
+		
 	}});
+	console.log(s_vacant_enclosure);
 	
 	
 }
