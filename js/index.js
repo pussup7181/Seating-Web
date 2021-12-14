@@ -92,12 +92,9 @@ function fetch_seat(str){
 		  seatData(str);
       }
       else{
-		  alert("Seat Empty");
 		  nam.value="";
 		designation.value="";
-		floor.selectedIndex = 0;
-		type.selectedIndex = 0;
-		number.value = "";
+		seatData(str);
       
       }
     })
@@ -148,16 +145,16 @@ signup_button.addEventListener('click',(e)=>{
     e.preventDefault();
     createUserWithEmailAndPassword(auth,signup_email.value,signup_password.value)
       .then((cred)=>{
-        console.log(cred);
+        
         //window.location.href = "/Seating-Web";
       });
   });
 login_button.addEventListener('click', (e)=>{
 	e.preventDefault();
 	
-		console.log("no-there");
+		
 		signInWithEmailAndPassword(auth,login_email.value,login_password.value).then((cred)=>{
-		console.log(cred);
+	
 	}).catch((error)=>{
       alert("Wrong Credentials");
     });
@@ -166,7 +163,7 @@ login_button.addEventListener('click', (e)=>{
 logout_button.addEventListener('click', (e)=>{
 	e.preventDefault();
 	signOut(auth).then(() => {
-		console.log("signOut");
+	
   // Sign-out successful.
 }).catch((error) => {
   // An error happened.
@@ -291,11 +288,10 @@ event.preventDefault();
 
 //SEAT ID MAPPING
 var area = document.querySelectorAll('area');
-console.log(area.length);
+
 area.forEach(elem => elem.addEventListener("click", (e)=>{
 	e.preventDefault();
 	fetch_seat(elem.id);
-	console.log(elem.id);
 }));
 
 
@@ -316,6 +312,7 @@ function data_table(){
 	var second_enclosure =0;
 	var total_chamber =0;
 	table_data.forEach(elem =>{
+		
 	var str = elem.id;
 	if(str!=""){
 		var tid = str.match(/.{1,1}/g);
@@ -325,11 +322,17 @@ function data_table(){
 				id += tid[i];
 			}else id = tid[i];
 		}
+		elem.addEventListener('click',()=>{
+			
+			fetch_seat(id);
+		});
 		const dbref = ref(db);
     get(child(dbref, "SeatNumber/"+id)).then((snapshot)=>{
       if(snapshot.exists()){
-		  elem.innerHTML = snapshot.val().seatNumber+" - "+snapshot.val().name+"<br />"+snapshot.val().designation;
-		  
+		  elem.innerHTML = snapshot.val().seatNumber+" - "+snapshot.val().designation;
+		  if(snapshot.val().name!=""){
+			  elem.innerHTML +="<br />"+"("+snapshot.val().name+")";
+		  }
       }
       else{
 		  switch(tid[1]){
@@ -393,7 +396,7 @@ function data_table(){
     });
 		
 	}});
-	console.log(s_vacant_enclosure);
+	
 	
 	
 }
