@@ -306,10 +306,16 @@ function data_table(){
 	var f_vacant_enclosure =0;
 	var s_vacant_enclosure =0;
 	var s_vacant_chamber =0;
-	var total_cabin = 0;
-	var total_workstation =0;
-	var second_enclosure =0;
-	var total_chamber =0;
+	var s_total_cabin = 0;
+	var f_total_cabin = 0;
+	var g_total_cabin = 0;
+	var s_total_workstation =0;
+	var f_total_workstation =0;
+	var g_total_workstation =0;
+	var s_total_enclosure =0;
+	var f_total_enclosure =0;
+	var g_total_enclosure =0;
+	var s_total_chamber =0;
 	table_data.forEach(elem =>{
 		
 	var str = elem.id;
@@ -331,7 +337,6 @@ function data_table(){
 		  elem.innerHTML = snapshot.val().seatNumber+" - "+snapshot.val().designation;
 		  if(snapshot.val().name!=""){
 			  elem.innerHTML +="<br />"+"("+snapshot.val().name+")";
-			  elem.style.cursor = "pointer";
 		  }
       }
       else{
@@ -339,17 +344,21 @@ function data_table(){
 			  case "S":switch(tid[2]){
 				  case "E":
 					  s_vacant_enclosure +=1;
+					  s_total_enclosure +=1;
 					  document.getElementsByName('se-vacant')[0].innerHTML = s_vacant_enclosure;
 					  break;
 				  case "W":
 					  s_vacant_workstation +=1;
+					  s_total_workstation +=1;
 					  document.getElementsByName('sw-vacant')[0].innerHTML = s_vacant_workstation;
 					  break;
 				  case "C":if(tid[3]=="H"){
 					  s_vacant_chamber +=1;
+					  s_total_chamber+=1;
 					  document.getElementsByName('sch-vacant')[0].innerHTML = s_vacant_chamber;
 				  } else{
 					  s_vacant_cabin +=1;
+					  s_total_cabin +=1;
 					  document.getElementsByName('sc-vacant')[0].innerHTML = s_vacant_cabin;
 					  
 				  }
@@ -359,34 +368,39 @@ function data_table(){
 			  case "F":switch(tid[2]){
 					  case "E":
 					  f_vacant_enclosure +=1;
+					  f_total_enclosure +=1;
 					  document.getElementsByName('fe-vacant')[0].innerHTML = f_vacant_enclosure;
 					  break;
 				  case "W":
 					  f_vacant_workstation +=1;
+					  f_total_workstation +=1;
 					  document.getElementsByName('fw-vacant')[0].innerHTML = f_vacant_workstation;
 					  break;
 				  case "C":
 					  f_vacant_cabin +=1;
+					  f_total_cabin +=1;
 					  document.getElementsByName('fc-vacant')[0].innerHTML = f_vacant_cabin;
 					  break;
 			  }break;
 				case "G":switch(tid[2]){
 					  case "E":
 					  g_vacant_enclosure +=1;
+					g_total_enclosure +=1;
 					  document.getElementsByName('ge-vacant')[0].innerHTML = g_vacant_enclosure;
 					  break;
 				  case "W":
 					  g_vacant_workstation +=1;
+						g_total_enclosure +=1;
 					  document.getElementsByName('gw-vacant')[0].innerHTML = g_vacant_workstation;
 					  break;
 				  case "C":
 					  g_vacant_cabin +=1;
+						g_total_cabin +=1;
 					  document.getElementsByName('gc-vacant')[0].innerHTML = g_vacant_cabin;
 					  break;
 			  }break;
 		  }
- 		
-
+ 	
 		  elem.innerHTML = id+" - Vacant";
       
       }
