@@ -154,7 +154,6 @@ login_button.addEventListener('click', (e)=>{
 	
 		
 		signInWithEmailAndPassword(auth,login_email.value,login_password.value).then((cred)=>{
-	
 	}).catch((error)=>{
       alert("Wrong Credentials");
     });
@@ -332,6 +331,7 @@ function data_table(){
 		  elem.innerHTML = snapshot.val().seatNumber+" - "+snapshot.val().designation;
 		  if(snapshot.val().name!=""){
 			  elem.innerHTML +="<br />"+"("+snapshot.val().name+")";
+			  elem.style.cursor = "pointer";
 		  }
       }
       else{
