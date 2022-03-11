@@ -1057,7 +1057,7 @@
 	
 		window.jsPDF = window.jspdf.jsPDF;
 		var date = document.getElementsByClassName("date");
-		date[0].innerHTML=Date().getDate();
+		date[0].innerHTML=Date.now();
 		date[1].innerHTML=Date();
 		date[2].innerHTML=Date();
 		document.getElementById("print-button").addEventListener('click',()=>{
