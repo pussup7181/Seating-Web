@@ -434,7 +434,7 @@
 		<div id="table-ground" style="display: none" class="container">
 		<table border="2px" id="ground-pdf">
 			<tr height="50px"></tr>
-		<tr height="50px"><th style="font-size: 25px" colspan="5">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(Ground Floor)</th><td class="date"></td></tr>
+		<tr height="50px"><th style="font-size: 25px" colspan="6">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(Ground Floor)</th></tr>
 		<tr>
 			<th colspan="6">
 			Accomodation
@@ -572,7 +572,7 @@
 		<div id="table-first" style="display: none">
 		<table border="2px" id="first-pdf">
 		<tr height="50px"></tr>
-				<tr height="50px"><th style="font-size: 25px" colspan="6">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(First Floor)</th><td class="date"></td></tr>
+				<tr height="50px"><th style="font-size: 25px" colspan="7">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(First Floor)</th></tr>
 
 		<tr>
 			<th colspan="7">
@@ -835,7 +835,7 @@
 		<div id="table-second" style="display: none">
 	<table border="2px" id ="second-pdf">
 		<tr height="50px"></tr>
-		<tr height="50px"><th style="font-size: 25px" colspan="6">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(Second Floor)</th><td class="date"></td></tr>
+		<tr height="50px"><th style="font-size: 25px" colspan="7">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(Second Floor)</th></tr>
 
 		<tr>
 			<th colspan="7">
@@ -1056,14 +1056,7 @@
 	<script>
 	
 		window.jsPDF = window.jspdf.jsPDF;
-		var date_cell = document.getElementsByClassName("date");
-		var date=new Date();  
-		var day=date.getDate();  
-		var month=date.getMonth()+1;  
-		var year=date.getFullYear();  
-		date_cell[0].innerhtml = "Date: "+day+"/"+month+"/"+year;  
-		date_cell[1].innerhtml = "Date: "+day+"/"+month+"/"+year;  
-		date_cell[2].innerhtml = "Date: "+day+"/"+month+"/"+year;  
+	
 		document.getElementById("print-button").addEventListener('click',()=>{
 			var ground_pdf = document.getElementById("ground-pdf");
 			var first_pdf = document.getElementById("first-pdf");
