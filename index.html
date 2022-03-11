@@ -1056,10 +1056,12 @@
 	<script>
 	
 		window.jsPDF = window.jspdf.jsPDF;
-		var date = document.getElementsByClassName("date");
-		date[0].innerHTML=Date.now();
-		date[1].innerHTML=Date();
-		date[2].innerHTML=Date();
+		var date_cell = document.getElementsByClassName("date");
+		var date=new Date();  
+		var day=date.getDate();  
+		var month=date.getMonth()+1;  
+		var year=date.getFullYear();  
+		date_cell.innerhtml = "Date: "+day+"/"+month+"/"+year;  
 		document.getElementById("print-button").addEventListener('click',()=>{
 			var ground_pdf = document.getElementById("ground-pdf");
 			var first_pdf = document.getElementById("first-pdf");
