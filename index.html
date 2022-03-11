@@ -1061,7 +1061,9 @@
 		var day=date.getDate();  
 		var month=date.getMonth()+1;  
 		var year=date.getFullYear();  
-		date_cell.innerhtml = "Date: "+day+"/"+month+"/"+year;  
+		date_cell[0].innerhtml = "Date: "+day+"/"+month+"/"+year;  
+		date_cell[1].innerhtml = "Date: "+day+"/"+month+"/"+year;  
+		date_cell[2].innerhtml = "Date: "+day+"/"+month+"/"+year;  
 		document.getElementById("print-button").addEventListener('click',()=>{
 			var ground_pdf = document.getElementById("ground-pdf");
 			var first_pdf = document.getElementById("first-pdf");
