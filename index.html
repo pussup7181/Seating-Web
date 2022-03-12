@@ -434,7 +434,7 @@
 		<div id="table-ground" style="display: none" class="container">
 		<table border="2px" id="ground-pdf">
 			<tr height="50px"></tr>
-		<tr height="50px"><th style="font-size: 25px" colspan="6">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(Ground Floor)</th></tr>
+		<tr height="50px"><th style="font-size: 25px" colspan="5">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(Ground Floor)</th><td class="date"></td></tr>
 		<tr>
 			<th colspan="6">
 			Accomodation
@@ -572,7 +572,7 @@
 		<div id="table-first" style="display: none">
 		<table border="2px" id="first-pdf">
 		<tr height="50px"></tr>
-				<tr height="50px"><th style="font-size: 25px" colspan="7">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(First Floor)</th></tr>
+				<tr height="50px"><th style="font-size: 25px" colspan="6">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(First Floor)</th><td class="date"></td></tr>
 
 		<tr>
 			<th colspan="7">
@@ -835,7 +835,7 @@
 		<div id="table-second" style="display: none">
 	<table border="2px" id ="second-pdf">
 		<tr height="50px"></tr>
-		<tr height="50px"><th style="font-size: 25px" colspan="7">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(Second Floor)</th></tr>
+		<tr height="50px"><th style="font-size: 25px" colspan="6">Brief Detail of Seating Plan of NCRTC Corporate Office, Gatishakti Bhawan, INA(Second Floor)</th><td class="date"></td></tr>
 
 		<tr>
 			<th colspan="7">
@@ -1054,7 +1054,18 @@
 	<script src="js/jspdf.plugin.autotable.js"></script>
 	
 	<script>
-	
+		const day_name = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+            
+            const month_name = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var d = new Date();
+            var cell = document.getElementsByClassName("date");
+            var day = d.getDay();
+            var month = d.getMonth();
+
+            cell[0].innerHTML=day_name[day-1]+", "+d.getDate()+"/"+month_name[month]+"/"+d.getFullYear();
+            cell[1].innerHTML=day_name[day-1]+", "+d.getDate()+"/"+month_name[month]+"/"+d.getFullYear();
+            cell[2].innerHTML=day_name[day-1]+", "+d.getDate()+"/"+month_name[month]+"/"+d.getFullYear();
+
 		window.jsPDF = window.jspdf.jsPDF;
 	
 		document.getElementById("print-button").addEventListener('click',()=>{
@@ -1062,6 +1073,7 @@
 			var first_pdf = document.getElementById("first-pdf");
 			var second_pdf = document.getElementById("second-pdf");
 			var doc = new jsPDF({orientation: "l",unit:"px",format: "A4"});
+			
 			
 			ground_pdf.width = 1400;
 			first_pdf.width = 2180;
