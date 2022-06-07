@@ -321,6 +321,7 @@ function data_table(){
 	var str = elem.id;
 	if(str!=""){
 		var tid = str.match(/.{1,1}/g);
+		console.log("TID" + " " + tid);
 		var id = null;
 		for(var i = 1; i<tid.length;i++){
 			if(id!=null){
