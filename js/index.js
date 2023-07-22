@@ -104,69 +104,64 @@ function fetch_seat(str){
     });
 }
 function seatData(str){
-	var string = str.match(/.{1,1}/g);
-	
-	switch(string[0]){
-		case "F":
-			floor.selectedIndex = 2;
-			break;
-		case "G":
-			floor.selectedIndex = 1;
-			break;
-		case "S":
-			floor.selectedIndex = 3;
-			break;
-	}
-	
-	if(string.length>3 && string[1]=="C" && string[2]=="H"){
-		type.selectedIndex = 1;
-		number.value = string[string.length-1];
-		version.selectedIndex=0;
-	}
-	else{
-		if(string.length>4 && !isNaN(string[3])){
-			number.value = string[2]+string[3];
-			switch(string[4]){
-				case "None":
-					version.selectedIndex=0;
-					break;
-				case "A":
-					version.selectedIndex=1;
-					break;
-				case "B":
-					version.selectedIndex=2;
-					break;
-				case "C":
-					version.selectedIndex=3;
-					break;
-				case "D":
-					version.selectedIndex=4;
-					break;
-				case "E":
-					version.selectedIndex=5;
-					break;
-			}
-		}
-		else if(string.length>3 && !isNaN(string[3])){
-			number.value = string[2]+string[3];
-			version.selectedIndex=0;
-		}
-		else{
-				number.value = string[string.length-1];
-			version.selectedIndex=0;
-		}
-		switch(string[1]){
-		case "W":
-			type.selectedIndex = 4;
-			break;
-		case "E":
-			type.selectedIndex = 3;
-			break;
-		case "C":
-			type.selectedIndex = 2;
-			break;
-			}
-	}
+    // Get the individual parts of the string
+    const floorCode = str[0];
+    const seatTypeCode = str.slice(1, str.length - (str.length > 3 ? 2 : 1));
+    const seatNumber = parseInt(str.match(/\d+/)[0]);
+    const seatVersionCode = isNaN(parseInt(str[str.length-1])) ? str[str.length-1] : null;
+
+    // Set the floor
+    switch(floorCode){
+        case "F":
+            floor.selectedIndex = 2;
+            break;
+        case "G":
+            floor.selectedIndex = 1;
+            break;
+        case "S":
+            floor.selectedIndex = 3;
+            break;
+    }
+
+    // Set the seat type
+    switch(seatTypeCode){
+        case "CH":
+            type.selectedIndex = 1;
+            break;
+        case "C":
+            type.selectedIndex = 2;
+            break;
+        case "E":
+            type.selectedIndex = 3;
+            break;
+        case "W":
+            type.selectedIndex = 4;
+            break;
+    }
+
+    // Set the seat number
+    number.value = seatNumber;
+
+    // Set the seat version
+    switch(seatVersionCode){
+        case "A":
+            version.selectedIndex = 1;
+            break;
+        case "B":
+            version.selectedIndex = 2;
+            break;
+        case "C":
+            version.selectedIndex = 3;
+            break;
+        case "D":
+            version.selectedIndex = 4;
+            break;
+        case "E":
+            version.selectedIndex = 5;
+            break;
+        default:
+            version.selectedIndex = 0;
+    }
 }
 signup_button.addEventListener('click',(e)=>{
     e.preventDefault();
