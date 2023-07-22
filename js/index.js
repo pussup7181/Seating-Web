@@ -125,6 +125,7 @@ function seatData(str){
 		if(string.length>3 && !isNaN(string[3])){
 			number.value = string[2]+string[3];
 		}
+		
 		else{
 				number.value = string[string.length-1];
 		}
