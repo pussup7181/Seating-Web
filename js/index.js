@@ -369,15 +369,15 @@ function data_table(){
 	var str = elem.id;
 	if(str!=""){
 		var tid = str.match(/.{1,1}/g);
-		//console.log("TID" + " " + tid);
+		
 		var id = null;
 		for(var i = 1; i<tid.length;i++){
 			if(id!=null){
 				id += tid[i];
-				console.log("id = "+ id);
+				
 			}else {
 				id = tid[i];
-				console.log("id = "+ id);
+				
 			}
 		}
 		elem.addEventListener('click',()=>{
@@ -454,15 +454,7 @@ function data_table(){
 					  break;
 			  }break;
 		  }
-		  console.log("s_vacant_workstation"+ s_vacant_workstation);
-		  console.log("s_vacant_enclosure"+ s_vacant_enclosure);
-		  console.log("s_vacant_cabin"+ s_vacant_cabin);
-		  console.log("f_vacant_enclosure"+ f_vacant_enclosure);
-		  console.log("f_vacant_workstation"+ f_vacant_workstation);
-		  console.log("f_vacant_cabin"+ f_vacant_cabin);
-		  console.log("g_vacant_enclosure"+ g_vacant_enclosure);
-		  console.log("g_vacant_workstation"+ g_vacant_workstation);
-		  console.log("g_vacant_cabin"+ g_vacant_cabin);
+		 
 		  elem.innerHTML = id+" - Vacant";
       
       }
