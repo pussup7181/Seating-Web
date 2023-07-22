@@ -26,6 +26,7 @@ const firebaseConfig = {
   var floor = document.getElementById("floor");
   var type = document.getElementById("seat-type");
   var number = document.getElementById("seat-num");
+var version = document.getElementById("seat-ver");
   
   var seatNumber;
   var add = document.getElementById("add-employee");

@@ -1,0 +1,6 @@
+{
+    "liveServer.settings.host": "localhost",
+    "liveServer.settings.proxy": {
+        "proxyUri": "http://localhost"
+    }
+}
