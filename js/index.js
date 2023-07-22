@@ -121,14 +121,39 @@ function seatData(str){
 	if(string.length>3 && string[1]=="C" && string[2]=="H"){
 		type.selectedIndex = 1;
 		number.value = string[string.length-1];
+		version.selectedIndex=0;
 	}
 	else{
-		if(string.length>3 && !isNaN(string[3])){
+		if(string.length>4 && !isNaN(string[3])){
 			number.value = string[2]+string[3];
+			switch(string[4]){
+				case "None":
+					version.selectedIndex=0;
+					break;
+				case "A":
+					version.selectedIndex=1;
+					break;
+				case "B":
+					version.selectedIndex=2;
+					break;
+				case "C":
+					version.selectedIndex=3;
+					break;
+				case "D":
+					version.selectedIndex=4;
+					break;
+				case "E":
+					version.selectedIndex=5;
+					break;
+			}
 		}
-		
+		else if(string.length>3 && !isNaN(string[3])){
+			number.value = string[2]+string[3];
+			version.selectedIndex=0;
+		}
 		else{
 				number.value = string[string.length-1];
+			version.selectedIndex=0;
 		}
 		switch(string[1]){
 		case "W":
@@ -194,7 +219,7 @@ onAuthStateChanged(auth, (cred) => {
 	  table_second.style.display = "none";
   }
 });
-function GetSeat(f,t,n){
+function GetSeat(f,t,n,v){
     var seat = null;
 
   switch (f)
@@ -225,11 +250,32 @@ function GetSeat(f,t,n){
           seat += "W";
           break;
   }
-  return seat + n;
+  seat = seat + n;
+switch(v){
+	case "None":
+		break;
+	case "A":
+		seat+="A";
+		break;
+	case "B":
+		seat+="B";
+		break;
+	case "C":
+		seat+="C";
+		break;
+	case "D":
+		seat+="D";
+		break;		
+	case "E":
+		seat+="E";
+		break;
+	
+}
+	return seat;
   }
 function UpdateSeat(e){
 	e.preventDefault();
-		    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
+		    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value, version.options[version.selectedIndex].text);
 			 update(ref(db, "SeatNumber/"+seatNumber),{
       name:nam.value,
       designation:designation.value,
@@ -247,7 +293,7 @@ function UpdateSeat(e){
 	}
 function CheckData(event){
 	event.preventDefault();
-    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
+    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value, version.options[version.selectedIndex].text);
     const dbref = ref(db);
     get(child(dbref, "SeatNumber/"+seatNumber)).then((snapshot)=>{
       if(snapshot.exists()){
@@ -262,7 +308,7 @@ function CheckData(event){
     });
   }
 function SaveData(){
-   seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
+   seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value, version.options[version.selectedIndex].text);
     set(ref(db, "SeatNumber/"+seatNumber),{
       name:nam.value,
       designation:designation.value,
@@ -279,7 +325,7 @@ function SaveData(){
   }
 function empty_seat(){
 event.preventDefault();
-    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value);
+    seatNumber = GetSeat(floor.options[floor.selectedIndex].text, type.options[type.selectedIndex].text, number.value, version.options[version.selectedIndex].text);
     const dbref = ref(db);
     remove(child(dbref, "SeatNumber/"+seatNumber));
 	data_table();
